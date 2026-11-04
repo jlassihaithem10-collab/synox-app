@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>SYN0X POS — الكاسة الذكية للمحلات</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ECECE7}
+.th-dark,.dark-zone{--page:#0B0C0E;--bg:#141518;--bar:#0E0F11;--card:#1A1B1F;--card2:#212328;--line:#2A2C32;--border:#3A3D44;--tx:#F5F5F2;--tx2:#B4B6BC;--tx3:#C9CBD1;--tx4:#9A9CA3;--beige:#24221C;--beige2:#2F2C24;--beigeBd:#3A3526;--chip:#24262B;--marq:#2E3036;--hl:#FFC400;--hlbg:none;--nav:rgba(14,15,17,.82);--sh:rgba(0,0,0,.5)}
+.th-light{--page:#ECECE7;--bg:#F4F4F1;--bar:#FFFFFF;--card:#FFFFFF;--card2:#ECECE7;--line:#E2E2DC;--border:#D6D6D0;--tx:#17181B;--tx2:#55585F;--tx3:#3F4249;--tx4:#6B6E75;--beige:#F6F0E1;--beige2:#EDE4CC;--beigeBd:#E3D7B6;--chip:#F4F4F1;--marq:#D6D6D0;--hl:#17181B;--hlbg:linear-gradient(transparent 58%,rgba(255,196,0,.65) 58%);--nav:rgba(255,255,255,.86);--sh:rgba(23,24,27,.1)}
+.th-light .lift:hover{border-color:#C9C9C2;box-shadow:0 24px 48px rgba(23,24,27,.12)}
+.dark-zone{color:var(--tx)}
+
+html{scroll-behavior:smooth}
+a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
+.num{font-family:Poppins,Cairo,sans-serif;direction:ltr;unicode-bidi:isolate}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(32px)}}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.tilt{transform:perspective(1600px) rotateY(-9deg) rotateX(5deg);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tilt:hover{transform:perspective(1600px) rotateY(0) rotateX(0)}
+.tile{transition:border-color .3s,background .3s}
+.tap{animation:tap .55s ease-out}
+@keyframes tap{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,196,0,.7)}35%{transform:scale(.9)}100%{transform:scale(1);box-shadow:0 0 0 14px rgba(255,196,0,0)}}
+.ln{animation:ln .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ln{from{opacity:0;transform:translateX(-36px)}}
+.press{animation:press 1s ease-in-out infinite}
+@keyframes press{0%{box-shadow:0 0 0 0 rgba(255,196,0,.65)}100%{box-shadow:0 0 0 16px rgba(255,196,0,0)}}
+.pop{animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.7) translateY(20px)}}
+.marq{display:flex;width:max-content;animation:marq 34s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.lift{transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
+.lift:hover{transform:translateY(-8px);border-color:#4A4D55;box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.glow{animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 1px rgba(255,196,0,.5),0 20px 60px rgba(255,196,0,.18)}}
+.btn{transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,196,0,.28)}
+.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.prog{display:none}
+.burger{display:none}
+[dir=ltr] .inv-row{flex-direction:row-reverse}
+[dir=ltr] .band-grad{background:linear-gradient(to right,rgba(11,12,14,.82) 0%,rgba(11,12,14,.35) 45%,rgba(11,12,14,0) 70%)!important}
+[dir=ltr] .band-txt{right:auto!important;left:0}
+[dir=ltr] .prog-dir{transform-origin:left!important}
+[dir=ltr] .growx{transform-origin:left}
+.lang-sw{display:inline-flex;border:1px solid var(--border);border-radius:12px;overflow:hidden;height:44px}
+.lang-sw button{border:0;background:var(--card);color:var(--tx3);font-family:Cairo,Poppins,sans-serif;font-weight:800;font-size:14px;padding:0 10px;min-width:40px;cursor:pointer}
+@media (max-width:480px){.lang-sw button{padding:0 7px;min-width:34px;font-size:13px}}
+.stamp{animation:stampIn .8s cubic-bezier(.2,1.5,.4,1) .9s both, wob 4s ease-in-out 2s infinite;color:#141518}
+.stamp:hover{color:#141518}
+@keyframes stampIn{from{opacity:0;transform:scale(2.2) rotate(-40deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+@keyframes wob{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(-6deg) scale(1.05)}}
+@media (max-width:600px){.stamp{width:96px!important;height:96px!important;top:-18px!important;left:-4px!important}.stamp span.num{font-size:26px!important}}
+.wa-fab{animation:wa 2.4s ease-in-out infinite;transition:transform .25s}
+.wa-fab:hover{transform:scale(1.08)}
+@keyframes wa{0%,100%{box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 0 rgba(22,163,74,.55)}50%{box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 14px rgba(22,163,74,0)}}
+@supports (animation-timeline: view()){.paper{animation:paper linear both;animation-timeline:view();animation-range:entry 30% cover 55%}@keyframes paper{from{transform:translateY(-100%)}}}
+.cta-short{display:none}
+@media (max-width:1180px){.nav-links{display:none!important}.burger{display:inline-flex}}
+@media (min-width:1181px){.menu-panel{display:none!important}}
+.nav-links a{white-space:nowrap}
+[dir=ltr] .wa-fab{left:auto!important;right:20px}
+[dir=ltr] h1{font-size:48px!important;line-height:1.15!important}
+@media (max-width:600px){[dir=ltr] h1{font-size:34px!important}}
+@media (max-width:480px){.nav-cta{display:none!important}}
+@media (max-width:480px){.nav-sub{display:none}.cta-long{display:none}.cta-short{display:inline}}
+@media (max-width:600px){img[alt]{max-height:380px}h1{font-size:36px!important}h2{font-size:30px!important}.shrink{padding:26px!important}.shrink h3{font-size:28px!important}.zoom{padding-left:24px!important;padding-right:24px!important}}
+@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}}
+@supports (animation-timeline: view()){
+.prog{display:block;animation:prog linear both;animation-timeline:scroll(root)}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.heroOut{animation:heroOut linear both;animation-timeline:scroll(root);animation-range:0px 620px}
+@keyframes heroOut{to{transform:scale(.9) translateY(-30px);opacity:.25}}
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+@keyframes rv{from{opacity:0;transform:translateY(80px) scale(.96)}}
+.rvs{animation:rvs linear both;animation-timeline:view();animation-range:entry 0% cover 35%}
+@keyframes rvs{from{opacity:0;transform:translateX(-90px) rotate(-2deg)}}
+.zoom{animation:zoom linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+@keyframes zoom{from{transform:scale(.88);border-radius:80px;opacity:.4}}
+.phone{animation:phone linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes phone{from{transform:translateY(160px) rotate(-12deg) scale(.85);opacity:0}}
+.bar{transform-origin:bottom;animation:bar linear both;animation-timeline:view();animation-range:entry 20% cover 50%}
+@keyframes bar{from{transform:scaleY(.05)}}
+.growx{transform-origin:right;animation:growx linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+@keyframes growx{from{transform:scaleX(0)}}
+.shrink{animation:shrink linear both;animation-timeline:view();animation-range:exit-crossing 0% exit-crossing 100%}
+@keyframes shrink{to{transform:scale(.92);filter:brightness(.6)}}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+<div dir="{{dir}}" class="{{themeCls}}" style="background: var(--page); color: var(--tx); transition: background .4s, color .4s; font-family: Cairo, sans-serif; overflow-x: clip">
+
+<a class="wa-fab" href="{{waLink}}" target="_blank" rel="noopener" aria-label="احكي معانا في WhatsApp" style="position: fixed; bottom: 20px; left: 20px; z-index: 40; width: 60px; height: 60px; border-radius: 50%; background: #16A34A; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 30px var(--sh)">
+<svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"></path><path d="M9 10c.5 2 2 3.5 4 4l1.2-1.2 2 .8-.4 1.8c-3.6.2-7.4-3.6-7.2-7.2L10.4 8l.8 2z"></path></svg>
+</a>
+
+<div class="prog prog-dir" style="position: fixed; top: 0; right: 0; left: 0; height: 3px; background: {{accent}}; z-index: 50; transform-origin: right"></div>
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 30; background: var(--nav); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; box-sizing: border-box">
+<a href="#top" onClick="{{closeMenu}}" style="display: flex; align-items: baseline; gap: 8px; color: var(--tx); flex: none">
+<span class="num" style="font-size: 26px; font-weight: 800; letter-spacing: -0.5px">SX<span class="blink" style="color: #FFC400">.</span></span>
+<span class="num nav-sub" style="font-size: 14px; font-weight: 600; color: var(--tx4)">SYN0X POS</span>
+</a>
+<div class="nav-links" style="display: flex; align-items: center; gap: 24px; font-size: 16px; font-weight: 600">
+<a href="#why" style="color: var(--tx3)">علاش SYN0X</a>
+<a href="#acts" style="color: var(--tx3)">الأنشطة</a>
+<a href="#features" style="color: var(--tx3)">المميزات</a>
+<a href="#how" style="color: var(--tx3)">كيفاش يخدم</a>
+<a href="#pricing" style="color: var(--tx3)">الأسعار</a>
+<a href="#faq" style="color: var(--tx3)">أسئلة</a>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex: none">
+<a class="btn nav-cta" href="#contact" onClick="{{closeMenu}}" style="background: {{accent}}; color: #141518; font-weight: 800; font-size: 15px; padding: 10px 18px; border-radius: 12px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; white-space: nowrap"><span class="cta-long">جرّب 30 يوم بلاش</span><span class="cta-short">جرّب بلاش</span></a>
+<div class="lang-sw" role="group" aria-label="اللغة">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="3">
+<button type="button" onClick="{{l.pick}}" aria-pressed="{{l.on}}" lang="{{l.code}}" style="background: {{l.bg}}; color: {{l.fg}}">{{l.t}}</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--tx); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if>
+</button>
+<button type="button" class="burger" onClick="{{toggleMenu}}" aria-label="القائمة" aria-expanded="{{menuOpen}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--tx); align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="{{burgerPath}}"></path></svg>
+</button>
+</div>
+</nav>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<div class="menu-panel" style="border-top: 1px solid var(--line); padding: 8px 20px 16px; display: flex; flex-direction: column">
+<sc-for list="{{menuLinks}}" as="m" hint-placeholder-count="5">
+<a href="{{m.h}}" onClick="{{closeMenu}}" class="ln" style="color: var(--tx); font-size: 18px; font-weight: 700; padding: 14px 4px; border-bottom: 1px solid var(--line); min-height: 52px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; animation-delay: {{m.d}}">{{m.t}}<span style="color: var(--hl)">←</span></a>
+</sc-for>
+</div>
+</sc-if>
+</header>
+
+<!-- HERO (sticky, the rest slides over it) -->
+<section id="top" class="hero-stick" style="z-index: 0">
+<div class="heroOut" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<span class="up" style="align-self: flex-start; border: 1px solid var(--border); color: var(--tx3); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px"><span class="blink" style="width: 8px; height: 8px; border-radius: 50%; background: #16A34A"></span>مصنوع في تونس، للمحلات التونسية</span>
+<h1 class="h1m" style="margin: 0; font-size: 56px; line-height: 1.25; font-weight: 900">
+<span class="up" style="display: block; animation-delay: .1s">الكاسة الذكية للمحل متاعك.</span>
+<span class="up" style="display: block; animation-delay: .25s"><span style="color: var(--hl); background: var(--hlbg); -webkit-box-decoration-break: clone; box-decoration-break: clone">أسرع في الذروة، وتعرف ربحك.</span></span>
+</h1>
+<p class="up" style="margin: 0; font-size: 20px; line-height: 1.8; color: var(--tx2); max-width: 560px; animation-delay: .4s">برنامج كاشير على التابلت ولا الـcaisse، لكل محل يبيع: سناك، فاست فود، بيتزيريا، قهوة، مطعم، كشك ولا مخبزة. الطلب يتخلّص في ضغطتين، الكاسة تتعدّ ورقة بورقة، والسلعة تنقص وحدها مع كل بيعة.</p>
+<div class="up" style="display: flex; flex-wrap: wrap; gap: 12px; animation-delay: .55s">
+<a class="btn" href="#contact" style="background: {{accent}}; color: #141518; font-weight: 800; font-size: 18px; padding: 16px 28px; border-radius: 14px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">احجز تجربة في محلّك</a>
+<a href="#why" style="border: 1px solid var(--border); color: var(--tx); font-weight: 700; font-size: 18px; padding: 16px 28px; border-radius: 14px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">شوف شنوّة يعمل</a>
+</div>
+<p class="up" style="margin: 0; font-size: 16px; color: var(--tx4); font-weight: 600; animation-delay: .7s">ابتداءً من <span class="num" style="color: var(--tx); font-weight: 800">1 DT</span> في النهار · <span class="num">30</span> يوم تجربة بلاش</p>
+</div>
+
+<!-- live POS mockup -->
+<div class="up" style="flex: 1 1 520px; min-width: 0; animation-delay: .3s; position: relative">
+<a href="#pricing" class="stamp" aria-label="ابتداءً من 1 دينار في النهار" style="position: absolute; top: -26px; left: -14px; z-index: 5; width: 124px; height: 124px; border-radius: 50%; background: #FFC400; color: #141518; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 16px 40px rgba(0,0,0,0.35); border: 4px solid #141518">
+<span style="font-size: 12px; font-weight: 800; line-height: 1">ابتداءً من</span>
+<span class="num" style="font-size: 34px; font-weight: 800; line-height: 1.1">1 DT</span>
+<span style="font-size: 13px; font-weight: 800; line-height: 1">في النهار</span>
+</a>
+<div class="float">
+<div class="tilt dark-zone" role="img" aria-label="شاشة البيع في SYN0X تبيع طلب قهوة وكرواسان: المنتجات على اليسار والفاتورة على اليمين" style="background: var(--bar); border: 1px solid var(--line); border-radius: 24px; padding: 14px; box-shadow: 0 40px 100px var(--sh), 0 0 0 1px rgba(255,196,0,0.05)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 12px; color: var(--tx4); font-size: 13px">
+<span class="num" style="font-weight: 800; color: var(--tx)">SX<span style="color: #FFC400">.</span> <span style="color: var(--tx4); font-weight: 600">v1</span></span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span class="blink" style="width: 7px; height: 7px; border-radius: 50%; background: #16A34A"></span>متزامن</span>
+<span class="num">12:42</span>
+</div>
+<div class="inv-row" style="display: flex; gap: 12px">
+<!-- invoice -->
+<div style="flex: 0 0 38%; min-height: 300px; background: var(--card); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px; position: relative; overflow: hidden">
+<div style="background: var(--beige); border-radius: 12px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center">
+<div><div class="num" style="font-size: 26px; font-weight: 800">{{ticketNo}}</div><div class="num" style="font-size: 11px; color: var(--tx4)">N° {{serial}}</div></div>
+<span style="font-size: 12px; border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; color: var(--tx3)">Passager</span>
+</div>
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="flex: 1; display: flex; align-items: center; justify-content: center; color: #6B6E75; font-size: 13px; text-align: center">تيكي جديدة<br>اضغط على منتج</div>
+</sc-if>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="3">
+<div class="ln" style="display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--line)">
+<span class="num" style="border: 1px solid {{l.qc}}; color: {{l.qt}}; border-radius: 6px; padding: 2px 6px; font-size: 12px; transition: all .3s">{{l.q}}</span>
+<span style="flex: 1; min-width: 0">{{l.n}}<br><span style="color: var(--tx4); font-size: 11px">{{l.x}}</span></span>
+<span class="num" style="font-weight: 600">{{l.p}}</span>
+</div>
+</sc-for>
+<div style="flex: 1"></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<span style="color: var(--tx4); font-size: 13px">الإجمالي TTC</span>
+<span class="num" style="font-size: 24px; font-weight: 800; color: var(--hl)">{{total}}</span>
+</div>
+<div class="{{payCls}}" style="background: {{accent}}; color: #141518; border-radius: 12px; text-align: center; font-weight: 800; padding: 12px; font-size: 16px">خلّص <span class="num">{{total}} DT</span></div>
+<sc-if value="{{paying}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; inset: 0; background: rgba(14,15,17,0.88); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 14px">
+<div class="pop" style="background: #16A34A; color: #FFFFFF; border-radius: 16px; padding: 18px; text-align: center; width: 100%; box-sizing: border-box">
+<div style="font-size: 13px; font-weight: 700">المقبوض <span class="num">20.000</span></div>
+<div style="font-size: 15px; font-weight: 800; margin-top: 6px">رجّع للحريف</div>
+<div class="num" style="font-size: 30px; font-weight: 800">{{change}}</div>
+<div style="font-size: 12px; margin-top: 6px">التيكي تطبعت · تيكي جديدة…</div>
+</div>
+</div>
+</sc-if>
+</div>
+<!-- products -->
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; font-weight: 700">
+<span style="background: {{accent}}; color: #141518; border-radius: 8px; padding: 6px 10px">الكل</span>
+<span style="background: var(--card2); border-radius: 8px; padding: 6px 10px">قهوة</span>
+<span style="background: var(--card2); border-radius: 8px; padding: 6px 10px">سناك</span>
+<span style="background: var(--card2); border-radius: 8px; padding: 6px 10px">بيتزا</span>
+<span style="background: var(--card2); border-radius: 8px; padding: 6px 10px">حلو</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="9">
+<div class="tile {{t.cls}}" style="background: var(--card2); border-radius: 12px; padding: 8px; border: 2px solid {{t.border}}; position: relative">
+<div style="height: 54px; border-radius: 8px; background: {{t.tint}}"></div>
+<div style="font-size: 12px; font-weight: 700; margin-top: 6px">{{t.n}}</div>
+<div class="num" style="font-size: 11px; color: var(--tx3)">{{t.p}}</div>
+<sc-if value="{{t.qty}}" hint-placeholder-val="{{false}}">
+<span class="num pop" style="position: absolute; top: 4px; left: 4px; background: {{accent}}; color: #141518; border-radius: 999px; font-size: 11px; font-weight: 800; padding: 2px 7px">{{t.qty}}</span>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EVERYTHING BELOW SLIDES OVER THE HERO -->
+<div style="position: relative; z-index: 2; background: var(--bg); border-radius: 44px 44px 0 0; box-shadow: 0 -40px 80px var(--sh); border-top: 1px solid var(--line)">
+
+<!-- MARQUEE -->
+<div dir="ltr" aria-hidden="true" style="overflow: hidden; padding: 26px 0; border-bottom: 1px solid var(--line)">
+<div class="marq" style="gap: 0">
+<sc-for list="{{marq}}" as="m" hint-placeholder-count="16">
+<span style="font-family: Cairo, sans-serif; font-size: 30px; font-weight: 900; color: {{m.c}}; padding: 0 22px; white-space: nowrap">{{m.t}}</span>
+</sc-for>
+</div>
+</div>
+
+<!-- STRIP -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px">
+<div class="rv"><div style="font-size: 28px; font-weight: 900; color: var(--hl)">ضغطتين</div><div style="color: var(--tx2); font-size: 16px">من «خلّص» للتيكي الجديدة</div></div>
+<div class="rv"><div style="font-size: 28px; font-weight: 900; color: var(--hl)">بلا إنترنت</div><div style="color: var(--tx2); font-size: 16px">يبيع ويحفظ، ويتزامن كي يرجع</div></div>
+<div class="rv"><div style="font-size: 28px; font-weight: 900; color: var(--hl)">تابلت ولا caisse</div><div style="color: var(--tx2); font-size: 16px">نفس البرنامج، باللمس</div></div>
+<div class="rv"><div style="font-size: 28px; font-weight: 900; color: var(--hl)"><span class="num">30</span> يوم</div><div style="color: var(--tx2); font-size: 16px">تجربة كاملة بلاش</div></div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="acts" style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 40px; display: flex; flex-direction: column; gap: 24px; scroll-margin-top: 70px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
+<h2 style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">شنوّة تبيع إنت؟</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.8; color: var(--tx2)">نفس البرنامج، والمنيو والإعدادات تتبدّل حسب النشاط متاعك.</p>
+</div>
+<div class="rv" role="tablist" aria-label="الأنشطة" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{acts}}" as="a" hint-placeholder-count="7">
+<button type="button" role="tab" aria-selected="{{a.on}}" onClick="{{a.pick}}" style="background: {{a.bg}}; color: {{a.fg}}; border: 1px solid {{a.bd}}; border-radius: 999px; padding: 10px 18px; min-height: 46px; font-family: Cairo, sans-serif; font-size: 16px; font-weight: 800; cursor: pointer; transition: all .25s">{{a.n}}</button>
+</sc-for>
+</div>
+<div class="rv" style="background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 32px; display: flex; flex-wrap: wrap; gap: 32px">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<h3 style="margin: 0; font-size: 30px; font-weight: 900">{{act.n}}</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.8; color: var(--tx2)">{{act.d}}</p>
+<sc-for list="{{act.f}}" as="x" hint-placeholder-count="4">
+<div style="display: flex; gap: 10px; align-items: flex-start; font-size: 16px; font-weight: 700"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 5px"><path d="M5 12l5 5 9-10"></path></svg><span>{{x}}</span></div>
+</sc-for>
+<sc-for list="{{act.soon}}" as="x" hint-placeholder-count="1">
+<div style="display: flex; gap: 10px; align-items: center; font-size: 15px; font-weight: 700; color: var(--tx2)"><span style="border: 1px solid #F59E0B; color: #B45309; background: rgba(245,158,11,0.12); border-radius: 6px; padding: 1px 8px; font-size: 13px">قريب</span><span>{{x}}</span></div>
+</sc-for>
+</div>
+<div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 14px; font-weight: 800; color: var(--tx4)">مثال من المنيو</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px">
+<sc-for list="{{act.p}}" as="m" hint-placeholder-count="6">
+<div style="background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 10px; display: flex; flex-direction: column; gap: 6px">
+<span style="display: block; height: 46px; border-radius: 9px; background: {{m.t}}"></span>
+<span style="font-size: 15px; font-weight: 800">{{m.n}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PHOTO BAND -->
+<section style="max-width: 1240px; margin: 0 auto; padding: 24px 20px 24px">
+<div class="zoom" style="position: relative; border-radius: 36px; overflow: hidden; box-shadow: 0 30px 80px var(--sh)">
+<img src="/_blob/e949dd649c41e8758f459be862b6301f" alt="تابلت فيه شاشة بيع، طابعة تيكي وجهاز بطاقة على كونتوار محل" style="display: block; width: 100%; height: 560px; object-fit: cover">
+<div class="band-grad" style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(11,12,14,0.82) 0%, rgba(11,12,14,0.35) 45%, rgba(11,12,14,0) 70%)"></div>
+<div class="band-txt" style="position: absolute; top: 0; bottom: 0; right: 0; max-width: 460px; padding: 48px; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; color: #F5F5F2">
+<span style="align-self: flex-start; background: #FFC400; color: #141518; border-radius: 8px; padding: 4px 12px; font-weight: 800; font-size: 14px">كل ما يلزمك</span>
+<h2 style="margin: 0; font-size: 40px; font-weight: 900; line-height: 1.3; color: #F5F5F2">تابلت، طابعة، وبرك.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.8; color: #E4E4E0">نركّبو في الكونتوار متاعك في نهار. جهاز البطاقة اختياري.</p>
+</div>
+</div>
+</section>
+
+<!-- WHY: stacked sticky cards -->
+<section id="why" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 96px; display: flex; flex-direction: column; gap: 28px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px; max-width: 720px; margin-bottom: 12px">
+<h2 style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">مصنوع للمحل الصغير والمتوسط</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.8; color: var(--tx2)">سناك ولا قهوة ولا كشك: في الذروة ما عندكش وقت للقوائم والنوافذ. SYN0X مبني على قاعدة وحدة: أقل عدد ممكن من الضغطات.</p>
+</div>
+<sc-for list="{{why}}" as="w" hint-placeholder-count="3">
+<div class="shrink" style="position: sticky; top: {{w.top}}; background: {{w.bg}}; color: {{w.fg}}; border: 1px solid {{w.bd}}; border-radius: 32px; padding: 44px; min-height: 340px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; box-shadow: 0 -20px 60px var(--sh)">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span class="num" style="font-size: 18px; font-weight: 700; opacity: 0.6">{{w.n}}</span>
+<h3 style="margin: 0; font-size: 38px; font-weight: 900; line-height: 1.3">{{w.t}}</h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.85; opacity: 0.85">{{w.d}}</p>
+</div>
+<div style="flex: 0 1 300px; min-width: 220px; display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{w.chips}}" as="c" hint-placeholder-count="3">
+<div style="background: {{w.chipBg}}; border-radius: 16px; padding: 14px 18px; font-size: 16px; font-weight: 700; display: flex; justify-content: space-between; gap: 12px"><span>{{c.a}}</span><span class="num" style="opacity: 0.8">{{c.b}}</span></div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px; display: flex; flex-direction: column; gap: 28px">
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">قبل وبعد SYN0X</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+<div class="rvs" style="background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px"><span style="font-size: 20px; font-weight: 800; color: var(--tx4)">بالكرني والكاسة العادية</span></div>
+<sc-for list="{{ba}}" as="r" hint-placeholder-count="6">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; color: var(--tx4); line-height: 1.7">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.6" stroke-linecap="round" style="flex: none; margin-top: 5px"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>{{r.b}}</span>
+</div>
+</sc-for>
+</div>
+<div class="rv" style="background: var(--card); border: 2px solid {{accent}}; border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 4px; box-shadow: 0 30px 70px rgba(255,196,0,0.08)">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px"><span class="num" style="font-size: 22px; font-weight: 800">SX<span style="color: #FFC400">.</span></span><span style="font-size: 20px; font-weight: 800">بـ SYN0X</span></div>
+<sc-for list="{{ba}}" as="r" hint-placeholder-count="6">
+<div style="display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 16px; font-weight: 700; line-height: 1.7">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 5px"><path d="M5 12l5 5 9-10"></path></svg><span>{{r.a}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 96px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">كل شي يلزم المحل، في برنامج واحد</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<sc-for list="{{features}}" as="f" hint-placeholder-count="12">
+<div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="width: 12px; height: 12px; border-radius: 4px; background: {{f.dot}}"></span>
+<h3 style="margin: 0; font-size: 19px; font-weight: 800">{{f.t}}</h3>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--tx2)">{{f.d}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- OWNER APP (card section that zooms in) -->
+<section style="padding: 0 16px">
+<div class="zoom" style="max-width: 1320px; margin: 0 auto; background: var(--bar); border: 1px solid var(--line); border-radius: 44px; overflow: hidden">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<span class="rv" style="align-self: flex-start; color: #141518; background: {{accent}}; border-radius: 8px; padding: 4px 12px; font-weight: 800; font-size: 14px">لصاحب المحل</span>
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">المحل في جيبك، حتى كي ما تكونش فيه</h2>
+<p class="rv" style="margin: 0; font-size: 18px; line-height: 1.8; color: var(--tx2)">تطبيق التليفون يوريك البيع لتوة مقارنة بالبارح، الكاسة وفرق كل وردية، شنوّة ينقص من السلعة، والتنبيهات المهمّة.</p>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 17px">
+<div class="rvs" style="display: flex; gap: 12px; align-items: flex-start; background: var(--card); border-radius: 16px; padding: 16px"><span style="color: var(--hl); font-weight: 900">←</span><span><b>«زيد شراء»</b> في 3 ضغطات: شنوّة شريت، قدّاش، بقدّاش. المخزون والتكلفة يتحدّثو وحدهم.</span></div>
+<div class="rvs" style="display: flex; gap: 12px; align-items: flex-start; background: var(--card); border-radius: 16px; padding: 16px"><span style="color: var(--hl); font-weight: 900">←</span><span><b>المغلّفات:</b> الكراء والضو والماء يتنحّاو شوية شوية كل نهار، باش آخر الشهر الفلوس حاضرة.</span></div>
+<div class="rvs" style="display: flex; gap: 12px; align-items: flex-start; background: var(--card); border-radius: 16px; padding: 16px"><span style="color: var(--hl); font-weight: 900">←</span><span><b>الموافقات:</b> إرجاع فلوس كبير ولا تبديل طريقة الدفع يستنّى رأيك.</span></div>
+</div>
+</div>
+<div style="flex: 0 1 420px; min-width: 260px; margin: 0 auto">
+<div class="phone">
+<img src="/_blob/e99d1fc6ee8a3e2f28b4734b3f71af02" alt="صاحب محل يشوف أرقام المحل في تليفونو" style="display: block; width: 100%; height: 540px; object-fit: cover; border-radius: 32px; box-shadow: 0 40px 90px rgba(0,0,0,0.5)">
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HOW -->
+<section id="how" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">كيفاش نبداو؟</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<div class="rv" style="display: flex; flex-direction: column; gap: 12px">
+<div class="growx" style="height: 3px; background: {{accent}}; border-radius: 3px"></div>
+<span class="num" style="font-size: 48px; font-weight: 800; color: var(--border); margin-top: 8px">{{s.n}}</span>
+<h3 style="margin: 0; font-size: 22px; font-weight: 800">{{s.t}}</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.8; color: var(--tx2)">{{s.d}}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- RECEIPT -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+<div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<span class="rv" style="align-self: flex-start; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 700; color: var(--tx3)">الطباعة</span>
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">تيكي بالعربي، والرقم كبير باش الحريف يسمعو</h2>
+<p class="rv" style="margin: 0; font-size: 18px; line-height: 1.8; color: var(--tx2)">التيكي تتطبع وحدها بعد كل خلاص، فيها العنوان والمعرّف الجبائي والرقم التسلسلي. الإضافات والملاحظات ظاهرين للي يحضّر، والإجمالي TTC كبير.</p>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; font-weight: 700">
+<span style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px">80 ولا 58 ملم</span>
+<span style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px">عربي ولا فرنسي</span>
+<span style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px">إعادة طباعة «نسخة»</span>
+<span style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px">مشاركة في WhatsApp</span>
+</div>
+<img class="rv" src="/_blob/ea007f97c52607d51eca1435239fc866" alt="طابعة تيكي حرارية على كونتوار، جنبها سندويتش ملفوف وكانيت" style="display: block; width: 100%; height: 300px; object-fit: cover; border-radius: 24px; margin-top: 8px; box-shadow: 0 24px 60px var(--sh)">
+</div>
+<div style="flex: 0 1 340px; min-width: 260px; margin: 0 auto; display: flex; flex-direction: column; align-items: center">
+<div aria-hidden="true" style="width: 100%; height: 26px; background: var(--card2); border: 1px solid var(--border); border-radius: 14px 14px 6px 6px; position: relative; z-index: 2; box-shadow: 0 10px 30px var(--sh)"><div style="position: absolute; bottom: 6px; right: 12%; left: 12%; height: 4px; border-radius: 4px; background: var(--page)"></div></div>
+<div style="width: 84%; overflow: hidden; margin-top: -8px">
+<div class="paper" role="img" aria-label="مثال تيكي مطبوع بالعربي: رقم الطلب 017 والإجمالي 15.100" style="background: #FFFFFF; color: #111111; padding: 22px 18px 18px; font-family: Cairo, sans-serif; font-size: 13px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 20px 40px rgba(0,0,0,0.4)">
+<div style="text-align: center; font-weight: 900; font-size: 17px">[اسم المحل]</div>
+<div style="text-align: center; font-size: 11px; color: #444444">[العنوان] · [التليفون]<br>M.F [المعرّف الجبائي]</div>
+<div style="border: 2px solid #111111; border-radius: 6px; text-align: center; padding: 6px; margin: 6px 0">
+<div class="num" style="font-size: 40px; font-weight: 800; line-height: 1.1">#017</div>
+<div style="font-size: 11px; font-weight: 700">استنّى تسمع الرقم متاعك</div>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 11px; color: #444444"><span class="num">04/11/2026 12:42</span><span class="num">N° 0001234567</span></div>
+<div style="border-top: 1px dashed #111111; margin: 4px 0"></div>
+<div style="display: flex; justify-content: space-between; font-weight: 800"><span>2 كابوسان</span><span class="num">4.400</span></div>
+<div style="font-size: 12px; font-weight: 800; padding-inline-start: 10px">* سكر قليل</div>
+<div style="display: flex; justify-content: space-between; font-weight: 800"><span>1 بيتزا تن (متوسط)</span><span class="num">9.500</span></div>
+<div style="font-size: 12px; padding-inline-start: 10px">+ جبن زايد</div>
+<div style="display: flex; justify-content: space-between; font-weight: 800"><span>1 كرواسان</span><span class="num">1.200</span></div>
+<div style="border-top: 2px solid #111111; border-bottom: 2px solid #111111; padding: 6px 0; margin-top: 6px; display: flex; justify-content: space-between; align-items: baseline"><span style="font-weight: 900">الإجمالي TTC</span><span class="num" style="font-size: 22px; font-weight: 800">15.100</span></div>
+<div style="font-size: 11px; color: #444444; text-align: center">4 مقالات · نقدي <span class="num">20.000</span> · الصرف <span class="num">4.900</span></div>
+<div style="text-align: center; font-weight: 800; margin-top: 6px">يعيشك · بالشفاء</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DEVICES -->
+<section id="devices" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-direction: column; gap: 32px">
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">يخدم على الجهاز اللي عندك</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFC400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M18 12h.01"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">تابلت أندرويد</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--tx2)">بالعرض، كامل الشاشة، بأيقونة كيما أي تطبيق. الوضع الليلي والنهاري.</p>
+</div>
+<div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFC400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"></rect><path d="M8 21h8M12 15v6"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">Caisse POS باللمس</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--tx2)">Windows 10 ولا أحدث، ولا caisse أندرويد. خانة الكود-بار ورقم الحريف فوق الفاتورة.</p>
+</div>
+<div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFC400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">طابعة حرارية</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--tx2)">80 ولا 58 ملم. التيكي بالعربي ورقم الطلب كبير، وصل Avoir، وتقرير الوردية.</p>
+</div>
+<div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
+<svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFC400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"></rect><path d="M11 18h2"></path></svg>
+<h3 style="margin: 0; font-size: 20px; font-weight: 800">تليفونك</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.75; color: var(--tx2)">تطبيق صاحب المحل يتزامن مع الكاسة، وينجم يخدم بنسخة احتياطية في WhatsApp.</p>
+</div>
+</div>
+</section>
+
+<!-- QUOTE -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px">
+<div class="zoom" style="background: var(--beige); border-radius: 32px; padding: 64px 48px; display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; overflow: hidden">
+
+<p style="margin: 0; font-size: 52px; font-weight: 900; line-height: 1.4">«عملي <span style="color: var(--hl); background: var(--hlbg)">وذكي</span>.»</p>
+<p style="margin: 0; font-size: 17px; color: var(--tx2)">صاحب محل ملاوي وشباتي، بعد أول تجربة للبرنامج في المحل متاعو</p>
+</div>
+</section>
+
+<!-- PRICING (card section that zooms in) -->
+<section id="pricing" style="padding: 0 16px">
+<div class="zoom" style="max-width: 1320px; margin: 0 auto; background: var(--bar); border: 1px solid var(--line); border-radius: 44px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 32px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 44px; font-weight: 900">ابتداءً من <span class="num">1</span> دينار في النهار</h2>
+<p style="margin: 0; font-size: 20px; font-weight: 700; color: var(--tx3)">أرخص من كسكروت.</p>
+<p style="margin: 0; font-size: 18px; color: var(--tx2)">كل الخطط تبدا بـ <span class="num">30</span> يوم تجربة كاملة. بعدها، البيع والكاسة يقعدو يخدمو ديما. السوم يتخلّص بالشهر، والأجهزة (تابلت وطابعة) موش داخلة في السوم.</p>
+</div>
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div style="flex: 1 1 380px; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<label for="sales" style="font-size: 20px; font-weight: 800">قدّاش تبيع في النهار؟</label>
+<div class="num" style="font-size: 40px; font-weight: 800">{{salesTxt}} <span style="font-size: 18px; color: var(--tx4)">DT</span></div>
+<input id="sales" type="range" min="50" max="1500" step="50" value="{{sales}}" onInput="{{setSales}}" style="width: 100%; accent-color: #FFC400; height: 32px; cursor: pointer">
+<div style="background: var(--bg); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; color: var(--tx2); font-weight: 700">SYN0X ياخو من بيعك</span>
+<span style="font-size: 44px; font-weight: 900; line-height: 1.2"><span class="num" style="background: var(--hlbg)">{{pct}}%</span></span>
+<span style="font-size: 15px; color: var(--tx2)">يعني <span class="num" style="font-weight: 800; color: var(--tx)">1</span> دينار من كل <span class="num" style="font-weight: 800; color: var(--tx)">{{salesTxt}}</span>.</span>
+</div>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 20px; font-weight: 800">أرخص من حاجات تبيعها كل نهار</span>
+<sc-for list="{{cmp}}" as="c" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: {{c.fw}}"><span>{{c.n}}</span><span class="num">{{c.p}}</span></div>
+<div style="height: 14px; border-radius: 8px; background: var(--bg); overflow: hidden"><div class="growx" style="height: 100%; width: {{c.w}}; border-radius: 8px; background: {{c.c}}"></div></div>
+</div>
+</sc-for>
+<span style="font-size: 14px; color: var(--tx4)">الأسوام للمثال، تختلف من محل لمحل.</span>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch">
+<sc-for list="{{plans}}" as="p" hint-placeholder-count="3">
+<div class="rv lift {{p.cls}}" style="background: var(--card); border: 2px solid {{p.border}}; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h3 class="num" style="margin: 0; font-size: 24px; font-weight: 800">{{p.name}}</h3>
+<sc-if value="{{p.hot}}" hint-placeholder-val="{{false}}"><span style="background: {{accent}}; color: #141518; border-radius: 8px; padding: 4px 10px; font-size: 13px; font-weight: 800">الأكثر طلبًا</span></sc-if>
+</div>
+<p style="margin: 0; font-size: 15px; color: var(--tx2); line-height: 1.7">{{p.who}}</p>
+<div style="display: flex; flex-direction: column; gap: 2px"><span class="num" style="font-size: 34px; font-weight: 800">{{p.price}}</span><span style="font-size: 14px; color: var(--tx4); font-weight: 600">{{p.per}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; flex: 1">
+<sc-for list="{{p.items}}" as="it" hint-placeholder-count="5">
+<div style="display: flex; gap: 10px; align-items: flex-start"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><path d="M5 12l5 5 9-10"></path></svg><span>{{it}}</span></div>
+</sc-for>
+</div>
+<a class="btn" href="#contact" style="text-align: center; border-radius: 14px; padding: 14px; font-weight: 800; font-size: 17px; min-height: 52px; box-sizing: border-box; background: {{p.btnBg}}; color: {{p.btnFg}}; border: 1px solid var(--border)">اطلب هذي الخطة</a>
+</div>
+</sc-for>
+</div>
+<p style="margin: 0; font-size: 16px; color: var(--tx2); text-align: center">أكثر من محل ولا حاجة خاصة؟ <a href="#contact" style="color: var(--tx); font-weight: 800; text-decoration: underline">احكي معانا</a></p>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="max-width: 880px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 24px">
+<h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">أسئلة يسألوها أصحاب المحلات</h2>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<sc-for list="{{faq}}" as="q" hint-placeholder-count="6">
+<div class="rv" style="background: var(--card); border: 1px solid {{q.bd}}; border-radius: 18px; transition: border-color .3s">
+<button type="button" onClick="{{q.toggle}}" aria-expanded="{{q.open}}" style="width: 100%; background: none; border: 0; color: var(--tx); font-family: Cairo, sans-serif; font-size: 18px; font-weight: 700; text-align: start; padding: 20px 22px; min-height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 16px; cursor: pointer">
+<span>{{q.q}}</span><span class="num" style="color: var(--hl); font-size: 26px; font-weight: 700; display: inline-block; transition: transform .35s; transform: {{q.rot}}">+</span>
+</button>
+<sc-if value="{{q.open}}" hint-placeholder-val="{{false}}">
+<p class="up" style="margin: 0; padding: 0 22px 22px; font-size: 16px; line-height: 1.8; color: var(--tx2); animation-duration: .45s">{{q.a}}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px">
+<div class="zoom" style="background: {{accent}}; color: #141518; border-radius: 36px; padding: 64px 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+<h2 style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">نجيوك للمحل ونركّبوه معاك</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.8; font-weight: 600">نحطّو المنيو والأسوام متاعك، نوريو الكاشير كيفاش يخدم في ربع ساعة، وتجرّب <span class="num">30</span> يوم بلاش.</p>
+</div>
+<form style="display: flex; flex-direction: column; gap: 10px; flex: 1 1 340px; max-width: 420px; background: rgba(20,21,24,0.08); border-radius: 22px; padding: 20px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">إسمك
+<input type="text" value="{{f.name}}" onInput="{{setName}}" placeholder="مثلا: سامي" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 12px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px; box-sizing: border-box">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">نوع المحل
+<select value="{{f.kind}}" onChange="{{setKind}}" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 10px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px">
+<option value="سناك وملاوي">سناك وملاوي</option>
+<option value="فاست فود وكسكروت">فاست فود وكسكروت</option>
+<option value="بيتزيريا">بيتزيريا</option>
+<option value="قهوة وصالون شاي">قهوة وصالون شاي</option>
+<option value="مطعم">مطعم</option>
+<option value="كشك ومغازة">كشك ومغازة</option>
+<option value="مخبزة وباتيسري">مخبزة وباتيسري</option>
+<option value="محل آخر">محل آخر</option>
+</select>
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">الولاية
+<input type="text" value="{{f.city}}" onInput="{{setCity}}" placeholder="مثلا: باجة" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 12px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px; box-sizing: border-box">
+</label>
+<a class="btn" href="{{waLink}}" target="_blank" rel="noopener" style="background: var(--bg); color: var(--tx); border-radius: 14px; padding: 15px 24px; font-weight: 800; font-size: 18px; text-align: center; min-height: 56px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"></path></svg>ابعث الطلب في WhatsApp</a>
+<a href="tel:+21629495848" style="color: #141518; font-weight: 800; font-size: 15px; text-align: center; padding: 8px">ولا اتّصل: <span class="num">29 495 848</span></a>
+<a href="https://www.facebook.com/profile.php?id=61596007040555" target="_blank" rel="noopener" style="color: #141518; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 4px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"></path></svg>تابعنا على فيسبوك</a>
+</form>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top: 1px solid var(--line); background: var(--bar)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; color: var(--tx4); font-size: 14px">
+<span class="num" style="font-size: 22px; font-weight: 800; color: var(--tx)">SX<span style="color: #FFC400">.</span> <span style="font-size: 14px; color: var(--tx4)">SYN0X POS</span></span>
+<span>الكاسة الذكية للمحلات الصغار والمتوسطة · تونس</span>
+<a href="tel:+21629495848" class="num" style="color: var(--tx3)">29 495 848</a>
+<a href="https://www.facebook.com/profile.php?id=61596007040555" target="_blank" rel="noopener" aria-label="SYN0X على فيسبوك" style="color: var(--tx3); display: inline-flex; align-items: center; gap: 6px; font-weight: 700"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"></path></svg>فيسبوك</a>
+<span class="num">© 2026 SYN0X</span>
+</div>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFC400","options":["#FFC400","#F5F5F2","#16A34A"]},"demo":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":10200}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { open: 0, step: 0, cycle: 0, menu: false, lang: (() => { try { return localStorage.getItem('sx-lang') || 'ar'; } catch (e) { return 'ar'; } })(), sales: 300, act: 3, light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })(), name: '', kind: 'سناك وملاوي', city: '' }; }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      if (this.props.demo === false) return;
+      const s = this.state.step;
+      if (s >= 6) this.setState({ step: 0, cycle: this.state.cycle + 1 });
+      else this.setState({ step: s + 1 });
+    }, 1600);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  renderVals() {
+    const accent = this.props.accent ?? '#FFC400';
+    const fmt = (n) => n.toFixed(3);
+    const base = [
+      { n: 'إكسبريس', p: 1.5, tint: '#3A2E26', x: '' },
+      { n: 'كابوسان', p: 2.2, tint: '#4A3A2C', x: 'سكر قليل' },
+      { n: 'بيتزا تن', p: 9.5, tint: '#4A3222', x: 'متوسط' },
+      { n: 'كسكروت تن', p: 3.5, tint: '#3D3424', x: '' },
+      { n: 'ملاوي تن', p: 2, tint: '#3A3326', x: 'كامل' },
+      { n: 'كرواسان', p: 1.2, tint: '#4A3A1E', x: '' },
+      { n: 'كوكا', p: 2.5, tint: '#3A2626', x: '' },
+      { n: 'ماء', p: 1, tint: '#26303A', x: '' },
+      { n: 'تارت', p: 3, tint: '#3A2A30', x: '' }
+    ];
+    const demoOn = this.props.demo !== false;
+    const step = demoOn ? this.state.step : 4;
+    const DEMO = [1, 5, 1, 6];
+    const added = DEMO.slice(0, Math.min(step, 4));
+    const order = [], counts = {};
+    added.forEach((i) => { if (!(i in counts)) { counts[i] = 0; order.push(i); } counts[i] += 1; });
+    const last = step >= 1 && step <= 4 ? DEMO[step - 1] : -1;
+    const lines = order.map((i) => ({
+      q: '×' + counts[i], n: base[i].n, x: base[i].x, p: fmt(counts[i] * base[i].p),
+      qc: i === last ? accent : '#3A3D44', qt: i === last ? accent : '#F5F5F2'
+    }));
+    const totalN = order.reduce((a, i) => a + counts[i] * base[i].p, 0);
+    const tiles = base.map((b, i) => ({
+      n: b.n, p: fmt(b.p), tint: b.tint,
+      qty: counts[i] ? '×' + counts[i] : '',
+      border: counts[i] ? accent : 'transparent',
+      cls: i === last ? 'tap' : ''
+    }));
+    const no = 17 + (this.state.cycle % 80);
+    const ticketNo = '#' + String(no).padStart(3, '0');
+    const serial = String(1234567 + this.state.cycle);
+    const paying = step === 5 || step === 6;
+    const payCls = step === 4 ? 'press' : '';
+    const why = [
+      { n: '01', t: 'أسرع في الذروة', d: 'ضغطة على المنتج تحلّ الإضافات وحدها، زر «كامل» يختار التن والجبن والهريسة مرة وحدة، والخلاص بلا كتابة يعني المبلغ بالضبط.',
+        bg: 'var(--card)', fg: 'var(--tx)', bd: 'var(--line)', chipBg: 'var(--chip)', top: '96px',
+        chips: [{ a: 'منتج حاضر', b: '1 ضغطة' }, { a: 'منتج بإضافات', b: '3 ضغطات' }, { a: 'خلاص بالضبط', b: '2 ضغطات' }] },
+      { n: '02', t: 'كاسة مضبوطة', d: 'كل كاشير يحلّ ويسكّر الوردية متاعو. العدّ أعمى وورقة بورقة، والفرق يتسجّل على صاحبو. الإرجاع وسحب الفلوس بكود صاحب المحل.',
+        bg: 'var(--beige)', fg: 'var(--tx)', bd: 'var(--beigeBd)', chipBg: 'var(--beige2)', top: '120px',
+        chips: [{ a: 'العدّ', b: 'أعمى' }, { a: 'فرق الوردية', b: 'على صاحبها' }, { a: 'سحب الفلوس', b: 'بالكود' }] },
+      { n: '03', t: 'تعرف قدّاش ربحت', d: 'كل منتج عندو وصفة: البيعة تنقص السلعة، والشراء يحسب التكلفة. تشوف الربح الصافي بعد المرتبات والمصاريف، موش كان البيع.',
+        bg: accent, fg: '#141518', bd: accent, chipBg: 'rgba(20,21,24,0.1)', top: '144px',
+        chips: [{ a: 'البيع', b: '−' }, { a: 'تكلفة الوصفات', b: '−' }, { a: 'المرتبات والمصاريف', b: '= الربح' }] }
+    ];
+    const D = '#FFC400', G = '#16A34A', O = '#F59E0B', W = '#C9CBD1';
+    const features = [
+      { t: 'البيع باللمس', d: 'بطاقات بالصور، الأحجام والإضافات والملاحظات (بلا هريسة، مقصوص على زوز) في نافذة وحدة.', dot: D },
+      { t: 'الانتظار والمواصلة', d: 'حطّ طلب على جنب وابدا الجديد، ورجّعو بضغطة. رقم اليوم كبير باش تنادي بيه الحريف.', dot: D },
+      { t: 'الكاسة والورديات', d: 'فتح بفلوس البداية، مصاريف وسحب صاحب المحل، عدّ أعمى، تسليم للكاشير الجاي ولا تسكير النهار.', dot: G },
+      { t: 'الكريدي والحرفاء', d: 'كل حريف برقم قصير، الدين يتلوّن كي يفوت السقف، وخلاص الدين بضغطتين مع وصل.', dot: G },
+      { t: 'Avoir', d: 'ما عندكش صرف؟ أعطي الصرف Avoir. والإرجاع زادة ينجم يكون Avoir بلا ما تخرج فلوس.', dot: '#A78BFA' },
+      { t: 'السلعة والوصفات', d: 'كل بيعة تنقص المكوّنات، تنبيه كي سلعة قربت توفى ولا غلات، والتكلفة بالمعدّل.', dot: O },
+      { t: 'المزوّدين والشيكات', d: 'الشراء بالتفصيل ولا بمبلغ جملي، الخلاص من الكاسة ولا الجيب ولا شيك، وتذكير قبل الشيك.', dot: O },
+      { t: 'الخدّامة والمرتبات', d: 'يومي، أسبوعي ولا شهري. السلفة والمنحة، وتعرف ديما قدّاش يتسال كل واحد.', dot: W },
+      { t: 'المصاريف والمغلّفات', d: 'المصاريف القارّة تتنحّى كل نهار، والمتنوّعة تتسجّل بنوعها: غاز، تنظيف، تصليح…', dot: W },
+      { t: 'التقارير والربح', d: 'اليوم، البارح، 7 أيام، الشهر: البيع بالساعة، أكثر حاجة تباعت، والربح الصافي سطر بسطر.', dot: D },
+      { t: 'الأدوار والأكواد', d: 'كود بـ4 أرقام لكل كاشير، صلاحيات حسب الدور، وسجلّ مراقبة ما يتمسحش.', dot: G },
+      { t: 'عربي وفرنسي', d: 'الواجهة والتيكي بالعربي ولا بالفرنسي، والفاتورة ديما في نفس البلاصة.', dot: W }
+    ];
+    const words = ['سناك', 'قهوة', 'بيتزيريا', '1 DT في النهار', 'فاست فود', 'كشك', 'مطعم', 'مخبزة', 'SYN0X'];
+    const marq = [...words, ...words].map((t, i) => ({ t: t + '  ·', c: i % 4 === 3 ? accent : 'var(--marq)' }));
+    const steps = [
+      { n: '01', t: 'نركّبو المنيو متاعك', d: 'العائلات، المنتجات بالصور، الأسوام والإضافات. وكي تحب، الوصفات باش السلعة تتحسب.' },
+      { n: '02', t: 'الكاشير يدخل بكودو', d: 'يضغط على اسمو، يكتب 4 أرقام، يحلّ الوردية ويبدا يبيع. حتى بلا إنترنت.' },
+      { n: '03', t: 'إنت تتبّع من تليفونك', d: 'البيع، الكاسة، السلعة والربح، وتوافق على العمليات المهمّة من بعيد.' }
+    ];
+    const bars = [30, 45, 38, 62, 80, 55, 40, 70, 92, 48].map((h, i) => ({ h: h + 'px', c: i === 8 ? accent : '#3A3D44' }));
+    const off = { hot: false, cls: '', border: 'var(--line)', btnBg: 'transparent', btnFg: 'var(--tx)' };
+    const on = { hot: true, cls: 'glow', border: accent, btnBg: accent, btnFg: '#141518' };
+    const plans = [
+      { ...off, name: 'Basic', who: 'كاسة كاملة لمحل صغير.', price: '1 DT', per: 'في النهار · 30 د في الشهر',
+        items: ['البيع والكاسة والورديات', 'الكريدي والحرفاء و Avoir', 'الطباعة بالعربي', 'يخدم بلا إنترنت'] },
+      { ...off, name: 'Plus', who: 'تعرف شنوّة يتباع وشنوّة ينقص.', price: '1.5 DT', per: 'في النهار · 45 د في الشهر',
+        items: ['كل شي في Basic', 'التقارير: اليوم، الجمعة، الشهر', 'السلعة والوصفات', 'تنبيه كي سلعة قربت توفى'] },
+      { ...on, name: 'Pro', who: 'تعرف ربحك الصافي بالضبط.', price: '1.9 DT', per: 'في النهار · 57 د في الشهر',
+        items: ['كل شي في Plus', 'المزوّدين والشيكات', 'الخدّامة والمرتبات', 'المصاريف والربح الصافي'] },
+      { ...off, name: 'Max', who: 'المحل في جيبك، وين ما تكون.', price: '2.6 DT', per: 'في النهار · 78 د في الشهر',
+        items: ['كل شي في Pro', 'تطبيق التليفون لصاحب المحل', 'الموافقات من بعيد', 'سجلّ المراقبة', 'أكثر من جهاز'] }
+    ];
+    const qs = [
+      { q: 'يخدم كي يقصّ الإنترنت؟', a: 'إيه. البيع والكاسة والطباعة الكل يخدمو بلا إنترنت، والبيانات تتحفظ في الجهاز. كي يرجع الإنترنت، كل شي يتبعث وحدو.' },
+      { q: 'شنوّة يلزمني جهاز؟', a: 'تابلت أندرويد بالعرض، ولا caisse POS باللمس (Windows 10 ولا أحدث، ولا أندرويد)، وطابعة حرارية 80 ولا 58 ملم.' },
+      { q: 'الكاشير ينجم يتلاعب بالكاسة؟', a: 'الكاشير ما يشوفش المبلغ المتوقّع قبل ما يعدّ، كل وردية عندها الفرق متاعها، والإرجاع الكبير وسحب الفلوس يلزمهم كود صاحب المحل. وكل حذف ولا إلغاء يتسجّل.' },
+      { q: 'التيكي يتطبع بالعربي؟', a: 'إيه، بالعربي ولا بالفرنسي، فيها العنوان والمعرّف الجبائي والرقم التسلسلي، ورقم الطلب كبير.' },
+      { q: 'شنوّة يصير كي توفى التجربة؟', a: 'البيع والكاسة يقعدو يخدمو. الأقسام الأخرى (السلعة، التقارير…) تتقفل حتى تفعّل الاشتراك برمز.' },
+      { q: 'البيانات متاعي وين تتحفظ؟', a: 'في الجهاز متاعك، ونسخة في السحاب كي تفعّل المزامنة. كل محل يشوف كان بياناتو، والأكواد السرية ما تخرجش من الجهاز.' }
+    ];
+    const faq = qs.map((x, i) => {
+      const open = this.state.open === i;
+      return { ...x, open, rot: open ? 'rotate(45deg)' : 'rotate(0deg)', bd: open ? accent : 'var(--line)',
+        toggle: () => this.setState({ open: open ? -1 : i }) };
+    });
+    const menuOpen = !!this.state.menu;
+    const menuLinks = [['#acts', 'الأنشطة'], ['#why', 'علاش SYN0X'], ['#features', 'المميزات'], ['#how', 'كيفاش يخدم'], ['#pricing', 'الأسعار'], ['#faq', 'أسئلة']]
+      .map(([h, t], i) => ({ h, t, d: (i * 0.05) + 's' }));
+    const ba = [
+      { b: 'تحسب بالقلم وتغلط في الصرف وقت الذروة.', a: 'الصرف يتحسب وحدو، والخلاص في ضغطتين.' },
+      { b: 'آخر النهار الكاسة ناقصة وما تعرفش وين.', a: 'كل وردية بالفرق متاعها، على الكاشير متاعها.' },
+      { b: 'الكريدي في كرني، يضيع ولا يتنسى.', a: 'كل حريف برقمو، والدين ظاهر ويتلوّن كي يفوت السقف.' },
+      { b: 'السلعة توفى في وسط الخدمة.', a: 'تنبيه قبل ما توفى، وقائمة «ينقصك اليوم».' },
+      { b: 'تعرف قدّاش بعت، ما تعرفش قدّاش ربحت.', a: 'الربح الصافي بعد السلعة والمرتبات والمصاريف.' },
+      { b: 'لازمك تكون في المحل باش تعرف شنوّة صاير.', a: 'تتبّع كل شي من تليفونك.' }
+    ];
+    const st = this.state;
+    const msg = 'السلام، نحب نجرّب SYN0X POS.' +
+      (st.name ? '\nإسمي: ' + st.name : '') +
+      '\nالمحل: ' + st.kind +
+      (st.city ? '\nالولاية: ' + st.city : '');
+    const waLink = 'https://wa.me/21629495848?text=' + encodeURIComponent(msg);
+    const T = ['#E9D8B4', '#F1C9A8', '#E6D2C0', '#D9E2C8', '#F0DCC0', '#D8D3E6'];
+    const ACTS = [
+      { n: 'سناك وملاوي', d: 'طلبات للخارج وذروة قوية. الكاشير ياخو الطلب ويقبض ويحضّر، والبرنامج ما يعطّلوش.',
+        p: ['ملاوي تن', 'شباتي', 'ملفوف', 'كسكروت', 'فريت', 'كوكا'],
+        f: ['زر «كامل» يختار الإضافات بضغطة', 'رقم الطلب كبير في التيكي باش تنادي الحريف', 'الكريدي على الحرفاء', 'السلعة تنقص بالوصفة مع كل بيعة'], soon: [] },
+      { n: 'فاست فود', d: 'أحجام، إضافات وملاحظات برشا. البرنامج يحسب السوم وحدو.',
+        p: ['برقر', 'تاكوس', 'بانيني', 'فريت', 'نقتس', 'مشروب'],
+        f: ['الأحجام والإضافات في نافذة وحدة', 'الانتظار والمواصلة بين الطلبات', 'نسخة ثانية من التيكي للكوجينة'], soon: ['شاشة الكوجينة'] },
+      { n: 'بيتزيريا', d: 'صغير، متوسط، كبير: السوم والوصفة يتحسبو حسب الحجم.',
+        p: ['مرغريتا', 'بيتزا تن', '4 فصول', 'كالزون', 'فريت', 'مشروب'],
+        f: ['الأحجام لكل عائلة، والسوم يتحسب وحدو', 'المكوّنات تنقص حسب الحجم', 'الإضافات بسومها'], soon: ['التوصيل'] },
+      { n: 'قهوة وصالون شاي', d: 'منتجات حاضرة تتباع بضغطة وحدة، وكاشيرات يتبدّلو بالورديات.',
+        p: ['إكسبريس', 'كابوسان', 'تاي', 'عصير', 'ماء', 'كرواسان'],
+        f: ['البيع بضغطة وحدة للمنتج الحاضر', 'وردية لكل كاشير بالفرق متاعها', 'تيكي بالرقم التسلسلي والمعرّف الجبائي'], soon: ['الطاولات والسرفورة'] },
+      { n: 'مطعم', d: 'منيو أكبر، ملاحظات للكوجينة، ومصاريف وخدّامة لازم يتتبّعو.',
+        p: ['كسكسي', 'أوجّة', 'سلاطة', 'مقرونة', 'مشوي', 'مشروب'],
+        f: ['الملاحظات تتطبع للي يحضّر', 'الخدّامة والمرتبات والسلف', 'المصاريف والربح الصافي'], soon: ['الطاولات', 'شاشة الكوجينة'] },
+      { n: 'كشك ومغازة', d: 'برشا منتجات صغار، كريدي للجيران، ومزوّدين يتعدّاو كل جمعة.',
+        p: ['مشروبات', 'بسكوي', 'شكلاطة', 'مياه', 'حليب', 'ياغورت'],
+        f: ['البيع بضغطة ولا بالبحث بالاسم', 'المخزون بالحبة وتنبيه قبل ما يوفى', 'المزوّدين والشيكات', 'الكريدي بلاصة الكرني'], soon: ['الكود-بار', 'الميزان'] },
+      { n: 'مخبزة وباتيسري', d: 'بيع سريع في الصباح، وتكلفة المواد الأولية لازمها تتحسب.',
+        p: ['خبز', 'كرواسان', 'باتون', 'قاطو', 'بقلاوة', 'تارت'],
+        f: ['البيع بضغطة وحدة', 'الوصفات وتكلفة كل منتج', 'تنبيه كي مادة أولية تغلى'], soon: ['البيع بالكغ (الميزان)'] }
+    ];
+    const ai = this.state.act || 0;
+    const acts = ACTS.map((a, i) => ({ n: a.n, on: i === ai, bg: i === ai ? '#FFC400' : 'var(--card)', fg: i === ai ? '#141518' : 'var(--tx)', bd: i === ai ? '#FFC400' : 'var(--border)', pick: () => this.setState({ act: i }) }));
+    const A = ACTS[ai];
+    const act = { n: A.n, d: A.d, f: A.f, soon: A.soon, p: A.p.map((n, k) => ({ n, t: T[k % T.length] })) };
+    const sales = Number(this.state.sales) || 300;
+    const pctN = 100 / sales;
+    const pct = pctN >= 1 ? pctN.toFixed(1) : pctN.toFixed(2);
+    const cmpRaw = [['SYN0X (في النهار)', 1, '#FFC400', 800], ['كرواسان', 1.2, 'var(--border)', 600], ['قهوة', 1.5, 'var(--border)', 600], ['كسكروت', 2.5, 'var(--border)', 600]];
+    const cmp = cmpRaw.map(([n, p, c, fw]) => ({ n, p: p.toFixed(3), c, fw, w: Math.round(p / 2.5 * 100) + '%' }));
+    const isLight = !!this.state.light;
+    const lang = this.state.lang || 'ar';
+    const langs = [['ar', 'تونسي'], ['fr', 'FR'], ['en', 'EN']].map(([code, t]) => ({ code, t, on: code === lang,
+      bg: code === lang ? '#FFC400' : 'var(--card)', fg: code === lang ? '#141518' : 'var(--tx3)',
+      pick: () => { try { localStorage.setItem('sx-lang', code); } catch (e) {} try { if (typeof SXSetLang === 'function') SXSetLang(code); } catch (e) {} this.setState({ lang: code }); } }));
+    return { langs, dir: lang === 'ar' ? 'rtl' : 'ltr', acts, act, sales, salesTxt: String(sales), pct, cmp, setSales: (e) => this.setState({ sales: e.target.value }),
+      isLight, isDark: !isLight, themeCls: isLight ? 'th-light' : 'th-dark',
+      themeLabel: isLight ? 'الوضع الليلي' : 'الوضع النهاري',
+      toggleTheme: () => { const v = !this.state.light; try { localStorage.setItem('sx-theme', v ? 'light' : 'dark'); } catch (e) {} this.setState({ light: v }); },
+      ba, waLink, f: { name: st.name, kind: st.kind, city: st.city },
+      setName: (e) => this.setState({ name: e.target.value }),
+      setKind: (e) => this.setState({ kind: e.target.value }),
+      setCity: (e) => this.setState({ city: e.target.value }),
+      menuOpen, menuLinks,
+      burgerPath: menuOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }),
+      closeMenu: () => { if (this.state.menu) this.setState({ menu: false }); },
+      accent, tiles, lines, empty: lines.length === 0, total: fmt(totalN), change: fmt(20 - totalN),
+      paying, payCls, ticketNo, serial, why, features, marq, steps, bars, plans, faq };
+  }
+}
+</script>
+</body>
+</html>
