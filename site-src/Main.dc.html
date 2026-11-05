@@ -474,6 +474,38 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 </div>
 </section>
 
+<!-- PACKS (test) -->
+<section id="packs" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-direction: column; gap: 28px; scroll-margin-top: 70px">
+<div class="rv" style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
+<span style="align-self: flex-start; background: #FFC400; color: #141518; border-radius: 8px; padding: 4px 12px; font-weight: 800; font-size: 14px">الأجهزة</span>
+<h2 style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">ما عندكش أجهزة؟ نجيبوهملك ونركّبوهم</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.8; color: var(--tx2)">اختار الباك، ونجيوك للمحل نركّبو الجهاز والبرنامج والمنيو في نفس النهار.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch">
+<sc-for list="{{packs}}" as="k" hint-placeholder-count="3">
+<div class="rv lift" style="background: var(--card); border: 2px solid {{k.border}}; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column">
+<sc-if value="{{k.isTab}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 320 180" aria-hidden="true" style="display: block; width: 100%; height: 190px; background: #141518"><rect width="320" height="180" fill="#141518"></rect><ellipse cx="160" cy="166" rx="120" ry="8" fill="#000" fill-opacity="0.35"></ellipse><path d="M120 150h46l-8-36h-30z" fill="#2A2C32"></path><rect x="104" y="148" width="78" height="10" rx="5" fill="#212328"></rect><rect x="40" y="26" width="170" height="108" rx="12" fill="#0E0F11" stroke="#3A3D44" stroke-width="2"></rect><rect x="48" y="34" width="154" height="92" rx="6" fill="#1A1B1F"></rect><g fill="#2A2C32"><rect x="54" y="40" width="26" height="22" rx="3"></rect><rect x="84" y="40" width="26" height="22" rx="3"></rect><rect x="114" y="40" width="26" height="22" rx="3"></rect><rect x="54" y="66" width="26" height="22" rx="3"></rect><rect x="84" y="66" width="26" height="22" rx="3"></rect><rect x="114" y="66" width="26" height="22" rx="3"></rect></g><rect x="146" y="40" width="50" height="80" rx="4" fill="#24221C"></rect><rect x="150" y="106" width="42" height="10" rx="3" fill="#FFC400"></rect><rect x="226" y="98" width="66" height="54" rx="10" fill="#212328"></rect><rect x="234" y="94" width="50" height="8" rx="3" fill="#0B0C0E"></rect><path d="M240 94V70h38v24" fill="#FFFFFF"></path><rect x="246" y="78" width="26" height="3" rx="1.5" fill="#BBBBBB"></rect><circle cx="280" cy="140" r="4" fill="#16A34A"></circle></svg></sc-if>
+<sc-if value="{{k.isCaisse}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 320 180" aria-hidden="true" style="display: block; width: 100%; height: 190px; background: #141518"><rect width="320" height="180" fill="#141518"></rect><ellipse cx="160" cy="168" rx="130" ry="8" fill="#000" fill-opacity="0.35"></ellipse><rect x="40" y="136" width="150" height="28" rx="6" fill="#212328"></rect><rect x="100" y="146" width="30" height="5" rx="2.5" fill="#3A3D44"></rect><path d="M104 136l8-30h26l8 30z" fill="#2A2C32"></path><rect x="58" y="18" width="134" height="92" rx="10" fill="#0E0F11" stroke="#3A3D44" stroke-width="2" transform="rotate(-6 125 64)"></rect><rect x="66" y="26" width="118" height="76" rx="5" fill="#1A1B1F" transform="rotate(-6 125 64)"></rect><rect x="150" y="80" width="28" height="9" rx="3" fill="#FFC400" transform="rotate(-6 125 64)"></rect><rect x="214" y="100" width="70" height="56" rx="10" fill="#212328"></rect><rect x="222" y="96" width="54" height="8" rx="3" fill="#0B0C0E"></rect><path d="M228 96V74h42v22" fill="#FFFFFF"></path><circle cx="272" cy="144" r="4" fill="#16A34A"></circle></svg></sc-if>
+<sc-if value="{{k.isAcc}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 320 180" aria-hidden="true" style="display: block; width: 100%; height: 190px; background: #141518"><rect width="320" height="180" fill="#141518"></rect><ellipse cx="160" cy="166" rx="130" ry="8" fill="#000" fill-opacity="0.35"></ellipse><rect x="30" y="104" width="76" height="56" rx="10" fill="#212328"></rect><rect x="38" y="100" width="60" height="8" rx="3" fill="#0B0C0E"></rect><path d="M46 100V70h44v30" fill="#FFFFFF"></path><rect x="120" y="120" width="100" height="40" rx="6" fill="#2A2C32"></rect><rect x="130" y="128" width="80" height="6" rx="3" fill="#3A3D44"></rect><rect x="160" y="144" width="20" height="6" rx="3" fill="#FFC400"></rect><circle cx="262" cy="136" r="22" fill="#F5F5F2"></circle><circle cx="262" cy="136" r="8" fill="#141518"></circle><circle cx="282" cy="116" r="16" fill="#E8E8E3"></circle><circle cx="282" cy="116" r="6" fill="#141518"></circle><path d="M136 104l14-40h14l-4 40z" fill="#3A3D44"></path><rect x="140" y="56" width="30" height="12" rx="4" fill="#212328"></rect></svg></sc-if>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 14px; flex: 1">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px">
+<h3 style="margin: 0; font-size: 24px; font-weight: 900">{{k.n}}</h3>
+<span style="border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 700; color: var(--tx3); white-space: nowrap">{{k.tag}}</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 9px; flex: 1">
+<sc-for list="{{k.items}}" as="it" hint-placeholder-count="4">
+<div style="display: flex; gap: 10px; align-items: flex-start; font-size: 15px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><path d="M5 12l5 5 9-10"></path></svg><span>{{it}}</span></div>
+</sc-for>
+</div>
+<div style="font-size: 24px; font-weight: 900">اطلب السوم</div>
+<a class="btn" href="{{k.wa}}" target="_blank" rel="noopener" style="background: {{k.btnBg}}; color: {{k.btnFg}}; border: 1px solid var(--border); border-radius: 14px; padding: 14px; text-align: center; font-weight: 800; font-size: 17px; min-height: 52px; box-sizing: border-box">اسأل على السوم في WhatsApp</a>
+</div>
+</div>
+</sc-for>
+</div>
+<p class="rv" style="margin: 0; font-size: 15px; color: var(--tx2); line-height: 1.8">التركيب والتكوين في المحل · الأسوام تتبدّل حسب الموديل والتوفّر.</p>
+</section>
+
 <!-- QUOTE -->
 <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px">
 <div class="zoom" style="background: var(--beige); border-radius: 32px; padding: 64px 48px; display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; overflow: hidden">
@@ -602,7 +634,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFC400","options":["#FFC400","#F5F5F2","#16A34A"]},"demo":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":10200}}'>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFC400","options":["#FFC400","#F5F5F2","#16A34A"]},"demo":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":11000}}'>
 class Component extends DCLogic {
   constructor(props) { super(props); this.state = { open: 0, step: 0, cycle: 0, menu: false, lang: (() => { try { return localStorage.getItem('sx-lang') || 'ar'; } catch (e) { return 'ar'; } })(), sales: 300, act: 3, light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })(), name: '', kind: 'سناك وملاوي', city: '' }; }
   componentDidMount() {
@@ -712,7 +744,7 @@ class Component extends DCLogic {
         toggle: () => this.setState({ open: open ? -1 : i }) };
     });
     const menuOpen = !!this.state.menu;
-    const menuLinks = [['#acts', 'الأنشطة'], ['#why', 'علاش SYN0X'], ['#features', 'المميزات'], ['#how', 'كيفاش يخدم'], ['#pricing', 'الأسعار'], ['#faq', 'أسئلة']]
+    const menuLinks = [['#acts', 'الأنشطة'], ['#packs', 'الأجهزة'], ['#why', 'علاش SYN0X'], ['#features', 'المميزات'], ['#how', 'كيفاش يخدم'], ['#pricing', 'الأسعار'], ['#faq', 'أسئلة']]
       .map(([h, t], i) => ({ h, t, d: (i * 0.05) + 's' }));
     const ba = [
       { b: 'تحسب بالقلم وتغلط في الصرف وقت الذروة.', a: 'الصرف يتحسب وحدو، والخلاص في ضغطتين.' },
@@ -756,6 +788,15 @@ class Component extends DCLogic {
     const acts = ACTS.map((a, i) => ({ n: a.n, on: i === ai, bg: i === ai ? '#FFC400' : 'var(--card)', fg: i === ai ? '#141518' : 'var(--tx)', bd: i === ai ? '#FFC400' : 'var(--border)', pick: () => this.setState({ act: i }) }));
     const A = ACTS[ai];
     const act = { n: A.n, d: A.d, f: A.f, soon: A.soon, p: A.p.map((n, k) => ({ n, t: T[k % T.length] })) };
+    const packWa = (n) => 'https://wa.me/21629495848?text=' + encodeURIComponent('السلام، نحب نسأل على سوم ' + n + ' متاع SYN0X.');
+    const packs = [
+      { n: 'باك تابلت', tag: 'سناك · قهوة · فاست فود', isTab: true, isCaisse: false, isAcc: false, border: 'var(--line)', btnBg: 'transparent', btnFg: 'var(--tx)',
+        items: ['تابلت أندرويد 10 بوصة', 'حمّالة تدور ومسكّرة بالمفتاح', 'طابعة تيكي حرارية 80 ملم', 'تركيب البرنامج والمنيو في المحل'] },
+      { n: 'باك Caisse', tag: 'مطعم · كشك · مغازة', isTab: false, isCaisse: true, isAcc: false, border: accent, btnBg: accent, btnFg: '#141518',
+        items: ['Caisse POS باللمس 15 بوصة (Windows 10 ولا أحدث)', 'طابعة تيكي حرارية 80 ملم', 'كاسة فلوس تتحل مع التيكي', 'تركيب البرنامج والمنيو في المحل'] },
+      { n: 'الإكسسوارات', tag: 'كان عندك جهاز', isTab: false, isCaisse: false, isAcc: true, border: 'var(--line)', btnBg: 'transparent', btnFg: 'var(--tx)',
+        items: ['طابعة حرارية 80 ولا 58 ملم', 'كاسة فلوس', 'حمّالة تابلت', 'رولوات ورق حراري'] }
+    ].map((k) => ({ ...k, wa: packWa(k.n) }));
     const sales = Number(this.state.sales) || 300;
     const pctN = 100 / sales;
     const pct = pctN >= 1 ? pctN.toFixed(1) : pctN.toFixed(2);
@@ -766,7 +807,7 @@ class Component extends DCLogic {
     const langs = [['ar', 'تونسي'], ['fr', 'FR'], ['en', 'EN']].map(([code, t]) => ({ code, t, on: code === lang,
       bg: code === lang ? '#FFC400' : 'var(--card)', fg: code === lang ? '#141518' : 'var(--tx3)',
       pick: () => { try { localStorage.setItem('sx-lang', code); } catch (e) {} try { if (typeof SXSetLang === 'function') SXSetLang(code); } catch (e) {} this.setState({ lang: code }); } }));
-    return { langs, dir: lang === 'ar' ? 'rtl' : 'ltr', acts, act, sales, salesTxt: String(sales), pct, cmp, setSales: (e) => this.setState({ sales: e.target.value }),
+    return { packs, langs, dir: lang === 'ar' ? 'rtl' : 'ltr', acts, act, sales, salesTxt: String(sales), pct, cmp, setSales: (e) => this.setState({ sales: e.target.value }),
       isLight, isDark: !isLight, themeCls: isLight ? 'th-light' : 'th-dark',
       themeLabel: isLight ? 'الوضع الليلي' : 'الوضع النهاري',
       toggleTheme: () => { const v = !this.state.light; try { localStorage.setItem('sx-theme', v ? 'light' : 'dark'); } catch (e) {} this.setState({ light: v }); },
