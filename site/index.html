@@ -90,7 +90,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 @media (max-width:480px){.nav-cta{display:none!important}}
 @media (max-width:480px){.nav-sub{display:none}.cta-long{display:none}.cta-short{display:inline}}
 @media (max-width:600px){img[alt]{max-height:380px}h1{font-size:36px!important}h2{font-size:30px!important}.shrink{padding:26px!important}.shrink h3{font-size:28px!important}.zoom{padding-left:24px!important;padding-right:24px!important}}
-@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}}
+@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}@supports (animation-timeline: view()){.hero-spacer{height:520px}}}
 @supports (animation-timeline: view()){
 .prog{display:block;animation:prog linear both;animation-timeline:scroll(root)}
 @keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -110,6 +110,31 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 @keyframes growx{from{transform:scaleX(0)}}
 .shrink{animation:shrink linear both;animation-timeline:view();animation-range:exit-crossing 0% exit-crossing 100%}
 @keyframes shrink{to{transform:scale(.92);filter:brightness(.6)}}
+}
+@supports (animation-timeline: view()){
+@keyframes tiltFlat{0%{transform:perspective(1600px) rotateY(-14deg) rotateX(8deg) scale(.94)}35%,100%{transform:perspective(1600px) rotateY(0) rotateX(0) scale(1)}}
+@keyframes scrCash{0%,30%{opacity:0;transform:translateY(16px)}40%,62%{opacity:1;transform:none}72%,100%{opacity:0;transform:translateY(-16px)}}
+@keyframes scrRep{0%,62%{opacity:0;transform:translateY(16px)}72%,100%{opacity:1;transform:none}}
+@media (min-width:900px) and (min-height:740px){
+.tilt{animation:tiltFlat linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-cash{animation:scrCash linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-rep{animation:scrRep linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.heroOut{animation-range:620px 1000px!important}
+}
+@media not ((min-width:900px) and (min-height:740px)){
+.scr-cash{animation:scrCash linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+.scr-rep{animation:scrRep linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+}
+.plx{animation:plx linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plx{from{transform:translateY(-9%) scale(1.18)}to{transform:translateY(9%) scale(1.18)}}
+.plx-s{animation:plxS linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plxS{from{transform:translateY(50px)}to{transform:translateY(-50px)}}
+.stg>*{animation:stg linear both!important;animation-timeline:view()!important}
+.stg>:nth-child(4n+1){animation-range:entry 0% cover 28%!important}
+.stg>:nth-child(4n+2){animation-range:entry 12% cover 36%!important}
+.stg>:nth-child(4n+3){animation-range:entry 24% cover 44%!important}
+.stg>:nth-child(4n+4){animation-range:entry 36% cover 52%!important}
+@keyframes stg{from{opacity:0;transform:translateY(90px) rotate(1.5deg) scale(.94)}}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>

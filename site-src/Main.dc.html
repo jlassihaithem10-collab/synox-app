@@ -75,7 +75,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 @media (max-width:480px){.nav-cta{display:none!important}}
 @media (max-width:480px){.nav-sub{display:none}.cta-long{display:none}.cta-short{display:inline}}
 @media (max-width:600px){img[alt]{max-height:380px}h1{font-size:36px!important}h2{font-size:30px!important}.shrink{padding:26px!important}.shrink h3{font-size:28px!important}.zoom{padding-left:24px!important;padding-right:24px!important}}
-@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}}
+@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}@supports (animation-timeline: view()){.hero-spacer{height:520px}}}
 @supports (animation-timeline: view()){
 .prog{display:block;animation:prog linear both;animation-timeline:scroll(root)}
 @keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -95,6 +95,31 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 @keyframes growx{from{transform:scaleX(0)}}
 .shrink{animation:shrink linear both;animation-timeline:view();animation-range:exit-crossing 0% exit-crossing 100%}
 @keyframes shrink{to{transform:scale(.92);filter:brightness(.6)}}
+}
+@supports (animation-timeline: view()){
+@keyframes tiltFlat{0%{transform:perspective(1600px) rotateY(-14deg) rotateX(8deg) scale(.94)}35%,100%{transform:perspective(1600px) rotateY(0) rotateX(0) scale(1)}}
+@keyframes scrCash{0%,30%{opacity:0;transform:translateY(16px)}40%,62%{opacity:1;transform:none}72%,100%{opacity:0;transform:translateY(-16px)}}
+@keyframes scrRep{0%,62%{opacity:0;transform:translateY(16px)}72%,100%{opacity:1;transform:none}}
+@media (min-width:900px) and (min-height:740px){
+.tilt{animation:tiltFlat linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-cash{animation:scrCash linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-rep{animation:scrRep linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.heroOut{animation-range:620px 1000px!important}
+}
+@media not ((min-width:900px) and (min-height:740px)){
+.scr-cash{animation:scrCash linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+.scr-rep{animation:scrRep linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+}
+.plx{animation:plx linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plx{from{transform:translateY(-9%) scale(1.18)}to{transform:translateY(9%) scale(1.18)}}
+.plx-s{animation:plxS linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plxS{from{transform:translateY(50px)}to{transform:translateY(-50px)}}
+.stg>*{animation:stg linear both!important;animation-timeline:view()!important}
+.stg>:nth-child(4n+1){animation-range:entry 0% cover 28%!important}
+.stg>:nth-child(4n+2){animation-range:entry 12% cover 36%!important}
+.stg>:nth-child(4n+3){animation-range:entry 24% cover 44%!important}
+.stg>:nth-child(4n+4){animation-range:entry 36% cover 52%!important}
+@keyframes stg{from{opacity:0;transform:translateY(90px) rotate(1.5deg) scale(.94)}}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -172,7 +197,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <span style="font-size: 13px; font-weight: 800; line-height: 1">في النهار</span>
 </a>
 <div class="float">
-<div class="tilt dark-zone" role="img" aria-label="شاشة البيع في SYN0X تبيع طلب قهوة وكرواسان: المنتجات على اليسار والفاتورة على اليمين" style="background: var(--bar); border: 1px solid var(--line); border-radius: 24px; padding: 14px; box-shadow: 0 40px 100px var(--sh), 0 0 0 1px rgba(255,196,0,0.05)">
+<div class="tilt dark-zone" role="img" aria-label="شاشة البيع في SYN0X تبيع طلب قهوة وكرواسان: المنتجات على اليسار والفاتورة على اليمين" style="background: var(--bar); border: 1px solid var(--line); border-radius: 24px; padding: 14px; box-shadow: 0 40px 100px var(--sh), 0 0 0 1px rgba(255,196,0,0.05); position: relative">
 <div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 12px; color: var(--tx4); font-size: 13px">
 <span class="num" style="font-weight: 800; color: var(--tx)">SX<span style="color: #FFC400">.</span> <span style="color: var(--tx4); font-weight: 600">v1</span></span>
 <span style="display: inline-flex; align-items: center; gap: 6px"><span class="blink" style="width: 7px; height: 7px; border-radius: 50%; background: #16A34A"></span>متزامن</span>
@@ -235,11 +260,44 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 </div>
 </div>
 </div>
+<div class="scr scr-cash" aria-hidden="true" style="position: absolute; top: 44px; right: 14px; bottom: 14px; left: 14px; background: #141518; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px; color: #F5F5F2; opacity: 0; pointer-events: none">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 18px; font-weight: 900">الكاسة</span><span style="font-size: 13px; color: #9A9CA3">الوردية 2 · Alita</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; flex: 1">
+<div style="background: #1A1B1F; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 13px">
+<div style="display: flex; justify-content: space-between"><span style="color: #9A9CA3">فلوس البداية</span><span class="num">50.000</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #9A9CA3">البيع نقدي</span><span class="num">412.300</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #9A9CA3">خلاص كريدي</span><span class="num">20.000</span></div>
+<div style="display: flex; justify-content: space-between"><span style="color: #9A9CA3">مصاريف</span><span class="num" style="color: #DC2626">−18.500</span></div>
+<div style="border-top: 1px solid #2A2C32; padding-top: 8px; display: flex; justify-content: space-between; font-weight: 800"><span>المتوقّع</span><span class="num">463.800</span></div>
+</div>
+<div style="background: #1A1B1F; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 6px; align-items: center; justify-content: center; text-align: center">
+<span style="font-size: 13px; color: #9A9CA3">المعدود</span>
+<span class="num" style="font-size: 30px; font-weight: 800">463.800</span>
+<span style="background: #16A34A; color: #FFFFFF; border-radius: 999px; padding: 4px 14px; font-size: 14px; font-weight: 800">مضبوط</span>
+</div>
+</div>
+<div style="background: #FFC400; color: #141518; border-radius: 12px; text-align: center; font-weight: 800; padding: 11px; font-size: 15px">تسليم للوردية الجاية</div>
+</div>
+<div class="scr scr-rep" aria-hidden="true" style="position: absolute; top: 44px; right: 14px; bottom: 14px; left: 14px; background: #141518; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 12px; color: #F5F5F2; opacity: 0; pointer-events: none">
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 18px; font-weight: 900">التقارير</span><span style="font-size: 13px; color: #9A9CA3">اليوم</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="background: #1A1B1F; border-radius: 12px; padding: 10px"><div style="font-size: 12px; color: #9A9CA3">البيع</div><div class="num" style="font-size: 18px; font-weight: 800">612.400</div></div>
+<div style="background: #1A1B1F; border-radius: 12px; padding: 10px"><div style="font-size: 12px; color: #9A9CA3">التيكيات</div><div class="num" style="font-size: 18px; font-weight: 800">148</div></div>
+<div style="background: #1A1B1F; border-radius: 12px; padding: 10px"><div style="font-size: 12px; color: #9A9CA3">الربح الصافي</div><div class="num" style="font-size: 18px; font-weight: 800; color: #FFC400">184.900</div></div>
+</div>
+<div style="flex: 1; background: #1A1B1F; border-radius: 12px; padding: 12px; display: flex; align-items: flex-end; gap: 6px; min-height: 90px">
+<sc-for list="{{repBars}}" as="b" hint-placeholder-count="12">
+<div style="flex: 1; border-radius: 4px 4px 0 0; background: {{b.c}}; height: {{b.h}}"></div>
+</sc-for>
+</div>
+<div style="font-size: 13px; color: #9A9CA3">أكثر حاجة تباعت: <b style="color: #F5F5F2">كابوسان</b></div>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
+<div class="hero-spacer" aria-hidden="true"></div>
 
 <!-- EVERYTHING BELOW SLIDES OVER THE HERO -->
 <div style="position: relative; z-index: 2; background: var(--bg); border-radius: 44px 44px 0 0; box-shadow: 0 -40px 80px var(--sh); border-top: 1px solid var(--line)">
@@ -300,7 +358,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <!-- PHOTO BAND -->
 <section style="max-width: 1240px; margin: 0 auto; padding: 24px 20px 24px">
 <div class="zoom" style="position: relative; border-radius: 36px; overflow: hidden; box-shadow: 0 30px 80px var(--sh)">
-<img src="/_blob/e949dd649c41e8758f459be862b6301f" alt="تابلت فيه شاشة بيع، طابعة تيكي وجهاز بطاقة على كونتوار محل" style="display: block; width: 100%; height: 560px; object-fit: cover">
+<img class="plx" src="/_blob/e949dd649c41e8758f459be862b6301f" alt="تابلت فيه شاشة بيع، طابعة تيكي وجهاز بطاقة على كونتوار محل" style="display: block; width: 100%; height: 560px; object-fit: cover">
 <div class="band-grad" style="position: absolute; inset: 0; background: linear-gradient(to left, rgba(11,12,14,0.82) 0%, rgba(11,12,14,0.35) 45%, rgba(11,12,14,0) 70%)"></div>
 <div class="band-txt" style="position: absolute; top: 0; bottom: 0; right: 0; max-width: 460px; padding: 48px; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; color: #F5F5F2">
 <span style="align-self: flex-start; background: #FFC400; color: #141518; border-radius: 8px; padding: 4px 12px; font-weight: 800; font-size: 14px">كل ما يلزمك</span>
@@ -335,7 +393,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <!-- BEFORE / AFTER -->
 <section style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px; display: flex; flex-direction: column; gap: 28px">
 <h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">قبل وبعد SYN0X</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
 <div class="rvs" style="background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 28px; display: flex; flex-direction: column; gap: 4px">
 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px"><span style="font-size: 20px; font-weight: 800; color: var(--tx4)">بالكرني والكاسة العادية</span></div>
 <sc-for list="{{ba}}" as="r" hint-placeholder-count="6">
@@ -358,7 +416,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <!-- FEATURES -->
 <section id="features" style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 96px; display: flex; flex-direction: column; gap: 32px">
 <h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">كل شي يلزم المحل، في برنامج واحد</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
 <sc-for list="{{features}}" as="f" hint-placeholder-count="12">
 <div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; align-items: center; gap: 10px">
@@ -387,7 +445,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 </div>
 <div style="flex: 0 1 420px; min-width: 260px; margin: 0 auto">
 <div class="phone">
-<img src="/_blob/e99d1fc6ee8a3e2f28b4734b3f71af02" alt="صاحب محل يشوف أرقام المحل في تليفونو" style="display: block; width: 100%; height: 540px; object-fit: cover; border-radius: 32px; box-shadow: 0 40px 90px rgba(0,0,0,0.5)">
+<img class="plx-s" src="/_blob/e99d1fc6ee8a3e2f28b4734b3f71af02" alt="صاحب محل يشوف أرقام المحل في تليفونو" style="display: block; width: 100%; height: 540px; object-fit: cover; border-radius: 32px; box-shadow: 0 40px 90px rgba(0,0,0,0.5)">
 </div>
 </div>
 </div>
@@ -397,7 +455,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <!-- HOW -->
 <section id="how" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 32px">
 <h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">كيفاش نبداو؟</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px">
 <sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
 <div class="rv" style="display: flex; flex-direction: column; gap: 12px">
 <div class="growx" style="height: 3px; background: {{accent}}; border-radius: 3px"></div>
@@ -421,7 +479,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <span style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px">إعادة طباعة «نسخة»</span>
 <span style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px">مشاركة في WhatsApp</span>
 </div>
-<img class="rv" src="/_blob/ea007f97c52607d51eca1435239fc866" alt="طابعة تيكي حرارية على كونتوار، جنبها سندويتش ملفوف وكانيت" style="display: block; width: 100%; height: 300px; object-fit: cover; border-radius: 24px; margin-top: 8px; box-shadow: 0 24px 60px var(--sh)">
+<img class="plx-s" src="/_blob/ea007f97c52607d51eca1435239fc866" alt="طابعة تيكي حرارية على كونتوار، جنبها سندويتش ملفوف وكانيت" style="display: block; width: 100%; height: 300px; object-fit: cover; border-radius: 24px; margin-top: 8px; box-shadow: 0 24px 60px var(--sh)">
 </div>
 <div style="flex: 0 1 340px; min-width: 260px; margin: 0 auto; display: flex; flex-direction: column; align-items: center">
 <div aria-hidden="true" style="width: 100%; height: 26px; background: var(--card2); border: 1px solid var(--border); border-radius: 14px 14px 6px 6px; position: relative; z-index: 2; box-shadow: 0 10px 30px var(--sh)"><div style="position: absolute; bottom: 6px; right: 12%; left: 12%; height: 4px; border-radius: 4px; background: var(--page)"></div></div>
@@ -451,7 +509,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <!-- DEVICES -->
 <section id="devices" style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; display: flex; flex-direction: column; gap: 32px">
 <h2 class="rv" style="margin: 0; font-size: 44px; font-weight: 900">يخدم على الجهاز اللي عندك</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
 <div class="rv lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 10px">
 <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFC400" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M18 12h.01"></path></svg>
 <h3 style="margin: 0; font-size: 20px; font-weight: 800">تابلت أندرويد</h3>
@@ -482,7 +540,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <h2 style="margin: 0; font-size: 44px; font-weight: 900; line-height: 1.3">ما عندكش أجهزة؟ نجيبوهملك ونركّبوهم</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.8; color: var(--tx2)">اختار الباك، ونجيوك للمحل نركّبو الجهاز والبرنامج والمنيو في نفس النهار.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch">
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch">
 <sc-for list="{{packs}}" as="k" hint-placeholder-count="3">
 <div class="rv lift" style="background: var(--card); border: 2px solid {{k.border}}; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column">
 <sc-if value="{{k.isTab}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 320 180" aria-hidden="true" style="display: block; width: 100%; height: 190px; background: #141518"><rect width="320" height="180" fill="#141518"></rect><ellipse cx="160" cy="166" rx="120" ry="8" fill="#000" fill-opacity="0.35"></ellipse><path d="M120 150h46l-8-36h-30z" fill="#2A2C32"></path><rect x="104" y="148" width="78" height="10" rx="5" fill="#212328"></rect><rect x="40" y="26" width="170" height="108" rx="12" fill="#0E0F11" stroke="#3A3D44" stroke-width="2"></rect><rect x="48" y="34" width="154" height="92" rx="6" fill="#1A1B1F"></rect><g fill="#2A2C32"><rect x="54" y="40" width="26" height="22" rx="3"></rect><rect x="84" y="40" width="26" height="22" rx="3"></rect><rect x="114" y="40" width="26" height="22" rx="3"></rect><rect x="54" y="66" width="26" height="22" rx="3"></rect><rect x="84" y="66" width="26" height="22" rx="3"></rect><rect x="114" y="66" width="26" height="22" rx="3"></rect></g><rect x="146" y="40" width="50" height="80" rx="4" fill="#24221C"></rect><rect x="150" y="106" width="42" height="10" rx="3" fill="#FFC400"></rect><rect x="226" y="98" width="66" height="54" rx="10" fill="#212328"></rect><rect x="234" y="94" width="50" height="8" rx="3" fill="#0B0C0E"></rect><path d="M240 94V70h38v24" fill="#FFFFFF"></path><rect x="246" y="78" width="26" height="3" rx="1.5" fill="#BBBBBB"></rect><circle cx="280" cy="140" r="4" fill="#16A34A"></circle></svg></sc-if>
@@ -547,7 +605,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <span style="font-size: 14px; color: var(--tx4)">الأسوام للمثال، تختلف من محل لمحل.</span>
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch">
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch">
 <sc-for list="{{plans}}" as="p" hint-placeholder-count="3">
 <div class="rv lift {{p.cls}}" style="background: var(--card); border: 2px solid {{p.border}}; border-radius: 24px; padding: 30px; display: flex; flex-direction: column; gap: 16px">
 <div style="display: flex; justify-content: space-between; align-items: center">
@@ -798,6 +856,7 @@ class Component extends DCLogic {
       { n: 'الإكسسوارات', tag: 'كان عندك جهاز', isTab: false, isCaisse: false, isAcc: true, border: 'var(--line)', btnBg: 'transparent', btnFg: 'var(--tx)',
         items: ['طابعة حرارية 80 ولا 58 ملم', 'كاسة فلوس', 'حمّالة تابلت', 'رولوات ورق حراري'] }
     ].map((k) => ({ ...k, wa: packWa(k.n) }));
+    const repBars = [18, 26, 40, 72, 95, 60, 38, 30, 52, 84, 70, 44].map((h, i) => ({ h: h + '%', c: i === 4 ? '#FFC400' : '#3A3D44' }));
     const sales = Number(this.state.sales) || 300;
     const pctN = 100 / sales;
     const pct = pctN >= 1 ? pctN.toFixed(1) : pctN.toFixed(2);
@@ -808,7 +867,7 @@ class Component extends DCLogic {
     const langs = [['ar', 'تونسي'], ['fr', 'FR'], ['en', 'EN']].map(([code, t]) => ({ code, t, on: code === lang,
       bg: code === lang ? '#FFC400' : 'var(--card)', fg: code === lang ? '#141518' : 'var(--tx3)',
       pick: () => { try { localStorage.setItem('sx-lang', code); } catch (e) {} try { if (typeof SXSetLang === 'function') SXSetLang(code); } catch (e) {} this.setState({ lang: code }); } }));
-    return { packs, langs, dir: lang === 'ar' ? 'rtl' : 'ltr', acts, act, sales, salesTxt: String(sales), pct, cmp, setSales: (e) => this.setState({ sales: e.target.value }),
+    return { repBars, packs, langs, dir: lang === 'ar' ? 'rtl' : 'ltr', acts, act, sales, salesTxt: String(sales), pct, cmp, setSales: (e) => this.setState({ sales: e.target.value }),
       isLight, isDark: !isLight, themeCls: isLight ? 'th-light' : 'th-dark',
       themeLabel: isLight ? 'الوضع الليلي' : 'الوضع النهاري',
       toggleTheme: () => { const v = !this.state.light; try { localStorage.setItem('sx-theme', v ? 'light' : 'dark'); } catch (e) {} this.setState({ light: v }); },
