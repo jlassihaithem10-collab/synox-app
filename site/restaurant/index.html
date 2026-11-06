@@ -57,6 +57,11 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 .blink{animation:blink 1.6s ease-in-out infinite}
 @keyframes blink{50%{opacity:.35}}
 .prog{display:none}
+.deco-layer{-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 70%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 70%,transparent 100%)}
+.deco{opacity:.07;animation-name:drift;animation-iteration-count:infinite;animation-timing-function:ease-in-out;animation-direction:alternate}
+.th-dark .deco{opacity:.09}
+@keyframes drift{from{translate:0 0}to{translate:0 -18px}}
+@media (max-width:700px){.deco{opacity:.05}}
 .burger{display:none}
 [dir=ltr] .inv-row{flex-direction:row-reverse}
 [dir=ltr] .band-grad{background:linear-gradient(to right,rgba(11,12,14,.82) 0%,rgba(11,12,14,.35) 45%,rgba(11,12,14,0) 70%)!important}
