@@ -156,8 +156,19 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <sc-if value="{{isLight}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></sc-if>
 <sc-if value="{{isDark}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if>
 </button>
+<button type="button" class="burger" onClick="{{toggleMenu}}" aria-label="القائمة" aria-expanded="{{menuOpen}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--tx); align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="{{burgerPath}}"></path></svg>
+</button>
+
 </div>
 </nav>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}">
+<div class="menu-panel" style="border-top: 1px solid var(--line); padding: 8px 20px 16px; display: flex; flex-direction: column; background: var(--bar)">
+<sc-for list="{{menuLinks}}" as="m" hint-placeholder-count="8">
+<a href="{{m.h}}" onClick="{{closeMenu}}" class="ln" style="color: var(--tx); font-size: 18px; font-weight: {{m.fw}}; padding: 13px 4px; border-bottom: 1px solid var(--line); min-height: 50px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center">{{m.t}}<span style="color: var(--hl)">←</span></a>
+</sc-for>
+</div>
+</sc-if>
 </header>
 
 <!-- HERO -->
@@ -309,7 +320,8 @@ class Component extends DCLogic {
     super(props);
     this.state = {
       lang: (() => { try { return localStorage.getItem('sx-lang') || 'ar'; } catch (e) { return 'ar'; } })(),
-      light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })()
+      light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })(),
+      menu: false
     };
   }
   renderVals() {
@@ -401,8 +413,13 @@ class Component extends DCLogic {
     const langs = [['ar', 'تونسي'], ['fr', 'FR'], ['en', 'EN']].map(([code, t]) => ({ code, t, on: code === lang,
       bg: code === lang ? '#FFC400' : 'var(--card)', fg: code === lang ? '#141518' : 'var(--tx3)',
       pick: () => { try { localStorage.setItem('sx-lang', code); } catch (e) {} try { if (typeof SXSetLang === 'function') SXSetLang(code); } catch (e) {} this.setState({ lang: code }); } }));
+    const menuOpen = !!this.state.menu;
+    const menuLinks = [{ h: '../', t: 'الرئيسية', fw: 900 }, { h: '../#pricing', t: 'الأسعار', fw: 700 }, { h: '../#packs', t: 'الأجهزة', fw: 700 }]
+      .concat(ORDER.filter((k) => k !== key).map((k) => ({ h: '../' + k + '/', t: DATA[k].name, fw: 600 })));
     const isLight = !!this.state.light;
-    return { A, tiles, lines, total, others, waLink, hasSoon: A.soon.length > 0, langs, dir: lang === 'ar' ? 'rtl' : 'ltr',
+    return { menuOpen, menuLinks, burgerPath: menuOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16',
+      toggleMenu: () => this.setState({ menu: !this.state.menu }), closeMenu: () => this.setState({ menu: false }),
+      A, tiles, lines, total, others, waLink, hasSoon: A.soon.length > 0, langs, dir: lang === 'ar' ? 'rtl' : 'ltr',
       isLight, isDark: !isLight, themeCls: isLight ? 'th-light' : 'th-dark', themeLabel: isLight ? 'الوضع الليلي' : 'الوضع النهاري',
       toggleTheme: () => { const v = !this.state.light; try { localStorage.setItem('sx-theme', v ? 'light' : 'dark'); } catch (e) {} this.setState({ light: v }); } };
   }

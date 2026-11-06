@@ -61,6 +61,10 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 .blink{animation:blink 1.6s ease-in-out infinite}
 @keyframes blink{50%{opacity:.35}}
 .prog{display:none}
+.act-card .act-arrow{transition:transform .3s,background .3s,color .3s}
+.act-card:hover .act-arrow{background:#FFC400;color:#141518;border-color:#FFC400;transform:translateX(-6px)}
+[dir=ltr] .act-arrow{transform:scaleX(-1)}
+[dir=ltr] .act-card:hover .act-arrow{transform:scaleX(-1) translateX(-6px)}
 .burger{display:none}
 [dir=ltr] .inv-row{flex-direction:row-reverse}
 [dir=ltr] .band-grad{background:linear-gradient(to right,rgba(11,12,14,.82) 0%,rgba(11,12,14,.35) 45%,rgba(11,12,14,0) 70%)!important}
