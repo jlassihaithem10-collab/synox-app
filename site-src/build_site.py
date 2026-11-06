@@ -177,7 +177,7 @@ function st(str0){if(stCache[str0])return stCache[str0];var o={};str0.split(';')
 function TPL(v){var s={__v:v,__loc:{}};return h(F,null,__BODY__)}
 class DCLogic extends React.Component{render(){return TPL(this.renderVals())}}
 __LOGIC__
-var DEF=__DEFAULTS__;
+var DEF=Object.assign(__DEFAULTS__,window.SX_PROPS||{});
 applyDoc();ROOT=ReactDOM.createRoot(document.getElementById('root'));ROOT.render(h(Component,Object.assign({key:LANG},DEF)));
 })();
 '''.replace('__BODY__', body_js).replace('__LOGIC__', logic).replace('__DEFAULTS__', json.dumps(defaults, ensure_ascii=False)).replace('__I18N__', json.dumps(I18N, ensure_ascii=False))

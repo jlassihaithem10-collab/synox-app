@@ -340,6 +340,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <sc-for list="{{act.soon}}" as="x" hint-placeholder-count="1">
 <div style="display: flex; gap: 10px; align-items: center; font-size: 15px; font-weight: 700; color: var(--tx2)"><span style="border: 1px solid #F59E0B; color: #B45309; background: rgba(245,158,11,0.12); border-radius: 6px; padding: 1px 8px; font-size: 13px">قريب</span><span>{{x}}</span></div>
 </sc-for>
+<a class="btn" href="{{act.href}}" style="align-self: flex-start; margin-top: 6px; background: #FFC400; color: #141518; border-radius: 12px; padding: 12px 20px; font-weight: 800; font-size: 16px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px">شوف الصفحة كاملة <span aria-hidden="true">←</span></a>
 </div>
 <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
 <span style="font-size: 14px; font-weight: 800; color: var(--tx4)">مثال من المنيو</span>
@@ -847,7 +848,8 @@ class Component extends DCLogic {
     const ai = this.state.act || 0;
     const acts = ACTS.map((a, i) => ({ n: a.n, on: i === ai, bg: i === ai ? '#FFC400' : 'var(--card)', fg: i === ai ? '#141518' : 'var(--tx)', bd: i === ai ? '#FFC400' : 'var(--border)', pick: () => this.setState({ act: i }) }));
     const A = ACTS[ai];
-    const act = { n: A.n, d: A.d, f: A.f, soon: A.soon, p: A.p.map((n, k) => ({ n, t: T[k % T.length] })) };
+    const SLUGS = ['snack', 'snack', 'pizzeria', 'cafe', 'restaurant', 'kiosque', 'boulangerie'];
+    const act = { n: A.n, d: A.d, f: A.f, soon: A.soon, href: SLUGS[ai] + '/', p: A.p.map((n, k) => ({ n, t: T[k % T.length] })) };
     const packWa = (n) => 'https://wa.me/21629495848?text=' + encodeURIComponent('السلام، نحب نسأل على سوم ' + n + ' متاع SYN0X.');
     const packs = [
       { n: 'باك تابلت', tag: 'سناك · قهوة · فاست فود', isTab: true, isCaisse: false, isAcc: false, border: 'var(--line)', btnBg: 'transparent', btnFg: 'var(--tx)',

@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>SYN0X — صفحة نشاط</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ECECE7}
+.th-dark,.dark-zone{--page:#0B0C0E;--bg:#141518;--bar:#0E0F11;--card:#1A1B1F;--card2:#212328;--line:#2A2C32;--border:#3A3D44;--tx:#F5F5F2;--tx2:#B4B6BC;--tx3:#C9CBD1;--tx4:#9A9CA3;--beige:#24221C;--beige2:#2F2C24;--beigeBd:#3A3526;--chip:#24262B;--marq:#2E3036;--hl:#FFC400;--hlbg:none;--nav:rgba(14,15,17,.82);--sh:rgba(0,0,0,.5)}
+.th-light{--page:#ECECE7;--bg:#F4F4F1;--bar:#FFFFFF;--card:#FFFFFF;--card2:#ECECE7;--line:#E2E2DC;--border:#D6D6D0;--tx:#17181B;--tx2:#55585F;--tx3:#3F4249;--tx4:#6B6E75;--beige:#F6F0E1;--beige2:#EDE4CC;--beigeBd:#E3D7B6;--chip:#F4F4F1;--marq:#D6D6D0;--hl:#17181B;--hlbg:linear-gradient(transparent 58%,rgba(255,196,0,.65) 58%);--nav:rgba(255,255,255,.86);--sh:rgba(23,24,27,.1)}
+.th-light .lift:hover{border-color:#C9C9C2;box-shadow:0 24px 48px rgba(23,24,27,.12)}
+.dark-zone{color:var(--tx)}
+
+html{scroll-behavior:smooth}
+a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
+.num{font-family:Poppins,Cairo,sans-serif;direction:ltr;unicode-bidi:isolate}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(32px)}}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.tilt{transform:perspective(1600px) rotateY(-9deg) rotateX(5deg);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tilt:hover{transform:perspective(1600px) rotateY(0) rotateX(0)}
+.tile{transition:border-color .3s,background .3s}
+.tap{animation:tap .55s ease-out}
+@keyframes tap{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,196,0,.7)}35%{transform:scale(.9)}100%{transform:scale(1);box-shadow:0 0 0 14px rgba(255,196,0,0)}}
+.ln{animation:ln .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ln{from{opacity:0;transform:translateX(-36px)}}
+.press{animation:press 1s ease-in-out infinite}
+@keyframes press{0%{box-shadow:0 0 0 0 rgba(255,196,0,.65)}100%{box-shadow:0 0 0 16px rgba(255,196,0,0)}}
+.pop{animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.7) translateY(20px)}}
+.marq{display:flex;width:max-content;animation:marq 34s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.lift{transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
+.lift:hover{transform:translateY(-8px);border-color:#4A4D55;box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.glow{animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 1px rgba(255,196,0,.5),0 20px 60px rgba(255,196,0,.18)}}
+.btn{transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,196,0,.28)}
+.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.prog{display:none}
+.burger{display:none}
+[dir=ltr] .inv-row{flex-direction:row-reverse}
+[dir=ltr] .band-grad{background:linear-gradient(to right,rgba(11,12,14,.82) 0%,rgba(11,12,14,.35) 45%,rgba(11,12,14,0) 70%)!important}
+[dir=ltr] .band-txt{right:auto!important;left:0}
+[dir=ltr] .prog-dir{transform-origin:left!important}
+[dir=ltr] .growx{transform-origin:left}
+.lang-sw{display:inline-flex;border:1px solid var(--border);border-radius:12px;overflow:hidden;height:44px}
+.lang-sw button{border:0;background:var(--card);color:var(--tx3);font-family:Cairo,Poppins,sans-serif;font-weight:800;font-size:14px;padding:0 10px;min-width:40px;cursor:pointer}
+@media (max-width:480px){.lang-sw button{padding:0 7px;min-width:34px;font-size:13px}}
+.stamp{animation:stampIn .8s cubic-bezier(.2,1.5,.4,1) .9s both, wob 4s ease-in-out 2s infinite;color:#141518}
+.stamp:hover{color:#141518}
+@keyframes stampIn{from{opacity:0;transform:scale(2.2) rotate(-40deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+@keyframes wob{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(-6deg) scale(1.05)}}
+@media (max-width:600px){.stamp{width:82px!important;height:82px!important;top:-40px!important;left:-6px!important;border-width:3px!important}.stamp span{font-size:10px!important}.stamp span.num{font-size:22px!important}}
+.wa-fab{animation:wa 2.4s ease-in-out infinite;transition:transform .25s}
+.wa-fab:hover{transform:scale(1.08)}
+@keyframes wa{0%,100%{box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 0 rgba(22,163,74,.55)}50%{box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 14px rgba(22,163,74,0)}}
+@supports (animation-timeline: view()){.paper{animation:paper linear both;animation-timeline:view();animation-range:entry 30% cover 55%}@keyframes paper{from{transform:translateY(-100%)}}}
+.cta-short{display:none}
+@media (max-width:1180px){.nav-links{display:none!important}.burger{display:inline-flex}}
+@media (min-width:1181px){.menu-panel{display:none!important}}
+.nav-links a{white-space:nowrap}
+@media (max-width:700px){.tilt{width:620px;zoom:calc((100vw - 48px) / 620px);transform:none}.tilt:hover{transform:none}}
+[dir=ltr] .wa-fab{left:auto!important;right:20px}
+[dir=ltr] h1{font-size:48px!important;line-height:1.15!important}
+@media (max-width:600px){[dir=ltr] h1{font-size:34px!important}}
+@media (max-width:480px){.nav-cta{display:none!important}}
+@media (max-width:480px){.nav-sub{display:none}.cta-long{display:none}.cta-short{display:inline}}
+@media (max-width:600px){img[alt]{max-height:380px}h1{font-size:36px!important}h2{font-size:30px!important}.shrink{padding:26px!important}.shrink h3{font-size:28px!important}.zoom{padding-left:24px!important;padding-right:24px!important}}
+@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}@supports (animation-timeline: view()){.hero-spacer{height:520px}}}
+@supports (animation-timeline: view()){
+.prog{display:block;animation:prog linear both;animation-timeline:scroll(root)}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (min-width:900px) and (min-height:740px){.heroOut{animation:heroOut linear both;animation-timeline:scroll(root);animation-range:0px 620px}}
+@keyframes heroOut{to{transform:scale(.9) translateY(-30px);opacity:.25}}
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+@keyframes rv{from{opacity:0;transform:translateY(80px) scale(.96)}}
+.rvs{animation:rvs linear both;animation-timeline:view();animation-range:entry 0% cover 35%}
+@keyframes rvs{from{opacity:0;transform:translateX(-90px) rotate(-2deg)}}
+.zoom{animation:zoom linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+@keyframes zoom{from{transform:scale(.88);border-radius:80px;opacity:.4}}
+.phone{animation:phone linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes phone{from{transform:translateY(160px) rotate(-12deg) scale(.85);opacity:0}}
+.bar{transform-origin:bottom;animation:bar linear both;animation-timeline:view();animation-range:entry 20% cover 50%}
+@keyframes bar{from{transform:scaleY(.05)}}
+.growx{transform-origin:right;animation:growx linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+@keyframes growx{from{transform:scaleX(0)}}
+.shrink{animation:shrink linear both;animation-timeline:view();animation-range:exit-crossing 0% exit-crossing 100%}
+@keyframes shrink{to{transform:scale(.92);filter:brightness(.6)}}
+}
+@supports (animation-timeline: view()){
+@keyframes tiltFlat{0%{transform:perspective(1600px) rotateY(-14deg) rotateX(8deg) scale(.94)}35%,100%{transform:perspective(1600px) rotateY(0) rotateX(0) scale(1)}}
+@keyframes scrCash{0%,30%{opacity:0;transform:translateY(16px)}40%,62%{opacity:1;transform:none}72%,100%{opacity:0;transform:translateY(-16px)}}
+@keyframes scrRep{0%,62%{opacity:0;transform:translateY(16px)}72%,100%{opacity:1;transform:none}}
+@media (min-width:900px) and (min-height:740px){
+.tilt{animation:tiltFlat linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-cash{animation:scrCash linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-rep{animation:scrRep linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.heroOut{animation-range:620px 1000px!important}
+}
+@media not ((min-width:900px) and (min-height:740px)){
+.scr-cash{animation:scrCash linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+.scr-rep{animation:scrRep linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+}
+.plx{animation:plx linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plx{from{transform:translateY(-9%) scale(1.18)}to{transform:translateY(9%) scale(1.18)}}
+.plx-s{animation:plxS linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plxS{from{transform:translateY(50px)}to{transform:translateY(-50px)}}
+.stg>*{animation:stg linear both!important;animation-timeline:view()!important}
+.stg>:nth-child(4n+1){animation-range:entry 0% cover 28%!important}
+.stg>:nth-child(4n+2){animation-range:entry 12% cover 36%!important}
+.stg>:nth-child(4n+3){animation-range:entry 24% cover 44%!important}
+.stg>:nth-child(4n+4){animation-range:entry 36% cover 52%!important}
+@keyframes stg{from{opacity:0;transform:translateY(90px) rotate(1.5deg) scale(.94)}}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+<div dir="{{dir}}" class="{{themeCls}}" style="background: var(--page); color: var(--tx); transition: background .4s, color .4s; font-family: Cairo, sans-serif; overflow-x: clip; min-height: 100vh">
+
+<a class="wa-fab" href="{{waLink}}" target="_blank" rel="noopener" aria-label="احكي معانا في WhatsApp" style="position: fixed; bottom: 20px; left: 20px; z-index: 40; width: 60px; height: 60px; border-radius: 50%; background: #16A34A; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 30px rgba(0,0,0,0.45)">
+<svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"></path><path d="M9 10c.5 2 2 3.5 4 4l1.2-1.2 2 .8-.4 1.8c-3.6.2-7.4-3.6-7.2-7.2L10.4 8l.8 2z"></path></svg>
+</a>
+<div class="prog prog-dir" style="position: fixed; top: 0; right: 0; left: 0; height: 3px; background: #FFC400; z-index: 50; transform-origin: right"></div>
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 30; background: var(--nav); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06)">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; box-sizing: border-box">
+<a href="../" style="display: flex; align-items: baseline; gap: 8px; color: var(--tx); flex: none">
+<span class="num" style="font-size: 26px; font-weight: 800">SX<span class="blink" style="color: #FFC400">.</span></span>
+<span class="num nav-sub" style="font-size: 14px; font-weight: 600; color: var(--tx4)">SYN0X POS</span>
+</a>
+<div class="nav-links" style="display: flex; align-items: center; gap: 24px; font-size: 16px; font-weight: 600">
+<a href="../" style="color: var(--tx3)">الرئيسية</a>
+<a href="#problems" style="color: var(--tx3)">المشاكل</a>
+<a href="../#pricing" style="color: var(--tx3)">الأسعار</a>
+<a href="../#packs" style="color: var(--tx3)">الأجهزة</a>
+<a href="../#faq" style="color: var(--tx3)">أسئلة</a>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex: none">
+<a class="btn nav-cta" href="{{waLink}}" target="_blank" rel="noopener" style="background: #FFC400; color: #141518; font-weight: 800; font-size: 15px; padding: 10px 18px; border-radius: 12px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; white-space: nowrap">جرّب بلاش</a>
+<div class="lang-sw" role="group" aria-label="اللغة">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="3">
+<button type="button" onClick="{{l.pick}}" aria-pressed="{{l.on}}" lang="{{l.code}}" style="background: {{l.bg}}; color: {{l.fg}}">{{l.t}}</button>
+</sc-for>
+</div>
+<button type="button" onClick="{{toggleTheme}}" aria-label="{{themeLabel}}" title="{{themeLabel}}" style="width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); color: var(--tx); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<sc-if value="{{isLight}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></sc-if>
+<sc-if value="{{isDark}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if>
+</button>
+</div>
+</nav>
+</header>
+
+<!-- HERO -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<span class="up" style="align-self: flex-start; background: #FFC400; color: #141518; border-radius: 8px; padding: 5px 14px; font-weight: 800; font-size: 15px">SYN0X · {{A.name}}</span>
+<h1 class="up" style="margin: 0; font-size: 50px; line-height: 1.25; font-weight: 900; animation-delay: .1s">{{A.h1}}</h1>
+<p class="up" style="margin: 0; font-size: 19px; line-height: 1.8; color: var(--tx2); max-width: 560px; animation-delay: .25s">{{A.p}}</p>
+<div class="up" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center; animation-delay: .35s">
+<span style="font-size: 15px; font-weight: 700; color: var(--tx4)">يناسب:</span>
+<sc-for list="{{A.inc}}" as="x" hint-placeholder-count="4">
+<span style="border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: 14px; font-weight: 700; color: var(--tx3)">{{x}}</span>
+</sc-for>
+</div>
+<div class="up" style="display: flex; flex-wrap: wrap; gap: 12px; animation-delay: .45s">
+<a class="btn" href="{{waLink}}" target="_blank" rel="noopener" style="background: #FFC400; color: #141518; font-weight: 800; font-size: 18px; padding: 16px 28px; border-radius: 14px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">احجز تجربة في محلّك</a>
+<a href="../#pricing" style="border: 1px solid var(--border); color: var(--tx); font-weight: 700; font-size: 18px; padding: 16px 28px; border-radius: 14px; min-height: 56px; box-sizing: border-box; display: inline-flex; align-items: center">شوف الأسعار</a>
+</div>
+<p class="up" style="margin: 0; font-size: 16px; color: var(--tx4); font-weight: 600; animation-delay: .55s">ابتداءً من <span class="num" style="color: var(--tx); font-weight: 800">1 DT</span> في النهار · <span class="num">30</span> يوم تجربة بلاش</p>
+</div>
+<div class="up" style="flex: 1 1 480px; min-width: 0; animation-delay: .3s">
+<div class="float">
+<div class="tilt dark-zone" role="img" aria-label="شاشة البيع في SYN0X بمنتجات هذا النشاط" style="background: var(--bar); border: 1px solid var(--line); border-radius: 24px; padding: 14px; box-shadow: 0 40px 100px var(--sh); position: relative">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 12px; color: var(--tx4); font-size: 13px">
+<span class="num" style="font-weight: 800; color: var(--tx)">SX<span style="color: #FFC400">.</span> <span style="color: var(--tx4); font-weight: 600">v1</span></span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span class="blink" style="width: 7px; height: 7px; border-radius: 50%; background: #16A34A"></span>متزامن</span>
+<span class="num">08:12</span>
+</div>
+<div class="inv-row" style="display: flex; gap: 12px">
+<div style="flex: 0 0 38%; min-height: 280px; background: var(--card); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="background: var(--beige); border-radius: 12px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center">
+<div><div class="num" style="font-size: 26px; font-weight: 800">#042</div><div class="num" style="font-size: 11px; color: var(--tx4)">N° 0004182</div></div>
+<span style="font-size: 12px; border: 1px solid var(--border); border-radius: 8px; padding: 4px 8px; color: var(--tx3)">Passager</span>
+</div>
+<sc-for list="{{lines}}" as="l" hint-placeholder-count="2">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--line)">
+<span class="num" style="border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; font-size: 12px">{{l.q}}</span>
+<span style="flex: 1; min-width: 0">{{l.n}}</span>
+<span class="num" style="font-weight: 600">{{l.p}}</span>
+</div>
+</sc-for>
+<div style="flex: 1"></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline"><span style="color: var(--tx4); font-size: 13px">الإجمالي TTC</span><span class="num" style="font-size: 24px; font-weight: 800; color: #FFC400">{{total}}</span></div>
+<div class="press" style="background: #FFC400; color: #141518; border-radius: 12px; text-align: center; font-weight: 800; padding: 12px; font-size: 16px">خلّص <span class="num">{{total}} DT</span></div>
+</div>
+<div style="flex: 1 1 auto; min-width: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-content: start">
+<sc-for list="{{tiles}}" as="t" hint-placeholder-count="6">
+<div style="background: var(--card2); border-radius: 12px; padding: 8px; border: 2px solid {{t.border}}; position: relative">
+<div style="height: 54px; border-radius: 8px; background: {{t.tint}}"></div>
+<div style="font-size: 12px; font-weight: 700; margin-top: 6px">{{t.n}}</div>
+<div class="num" style="font-size: 11px; color: var(--tx3)">{{t.p}}</div>
+<sc-if value="{{t.qty}}" hint-placeholder-val="{{false}}"><span class="num" style="position: absolute; top: 4px; left: 4px; background: #FFC400; color: #141518; border-radius: 999px; font-size: 11px; font-weight: 800; padding: 2px 7px">{{t.qty}}</span></sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+<p style="margin: 10px 0 0; font-size: 13px; color: var(--tx4); text-align: center">الأسوام للمثال.</p>
+</div>
+</section>
+
+<div style="position: relative; z-index: 2; background: var(--bg); border-radius: 44px 44px 0 0; box-shadow: 0 -40px 80px var(--sh); border-top: 1px solid var(--line)">
+
+<!-- PROBLEMS -->
+<section id="problems" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 48px; display: flex; flex-direction: column; gap: 24px; scroll-margin-top: 70px">
+<h2 class="rv" style="margin: 0; font-size: 40px; font-weight: 900; line-height: 1.3">المشاكل اللي نعرفوها، وكيفاش SYN0X يحلّها</h2>
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+<sc-for list="{{A.pains}}" as="k" hint-placeholder-count="3">
+<div style="background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--tx2); line-height: 1.7"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.6" stroke-linecap="round" style="flex: none; margin-top: 4px"><path d="M6 6l12 12M18 6L6 18"></path></svg><span>{{k.b}}</span></div>
+<div style="height: 1px; background: var(--line)"></div>
+<div style="display: flex; gap: 12px; align-items: flex-start; font-size: 17px; font-weight: 800; line-height: 1.7"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 4px"><path d="M5 12l5 5 9-10"></path></svg><span>{{k.a}}</span></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 64px; display: flex; flex-direction: column; gap: 24px">
+<h2 class="rv" style="margin: 0; font-size: 40px; font-weight: 900">اللي يلزمك في {{A.name}}</h2>
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px">
+<sc-for list="{{A.feats}}" as="f" hint-placeholder-count="4">
+<div class="lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; gap: 12px; align-items: center; font-size: 17px; font-weight: 800"><span style="width: 12px; height: 12px; border-radius: 4px; background: #FFC400; flex: none"></span>{{f}}</div>
+</sc-for>
+</div>
+<sc-if value="{{hasSoon}}" hint-placeholder-val="{{true}}">
+<div class="rv" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 15px; font-weight: 700; color: var(--tx2)">
+<sc-for list="{{A.soon}}" as="x" hint-placeholder-count="1">
+<span style="display: inline-flex; gap: 8px; align-items: center"><span style="border: 1px solid #F59E0B; color: #B45309; background: rgba(245,158,11,0.12); border-radius: 6px; padding: 1px 8px; font-size: 13px">قريب</span>{{x}}</span>
+</sc-for>
+</div>
+</sc-if>
+</section>
+
+<!-- PHOTO + LAW -->
+<section style="max-width: 1240px; margin: 0 auto; padding: 0 20px 64px; display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+<div class="zoom" style="flex: 1 1 520px; min-width: 0; border-radius: 32px; overflow: hidden; min-height: 320px; position: relative">
+<img class="plx" src="/_blob/e949dd649c41e8758f459be862b6301f" alt="تابلت فيه شاشة بيع وطابعة تيكي على كونتوار محل" style="display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; position: absolute; inset: 0">
+</div>
+<div class="rv" style="flex: 1 1 340px; min-width: 0; background: var(--beige); border-radius: 32px; padding: 32px; display: flex; flex-direction: column; gap: 14px; justify-content: center">
+<span style="align-self: flex-start; border: 1px solid #F59E0B; color: #B45309; background: rgba(245,158,11,0.12); border-radius: 8px; padding: 3px 12px; font-size: 14px; font-weight: 800">قانون الكاسة الجبائية</span>
+<p style="margin: 0; font-size: 19px; font-weight: 800; line-height: 1.7">{{A.law}}</p>
+<p style="margin: 0; font-size: 15px; color: var(--tx2); line-height: 1.8">ابعثلنا في WhatsApp ونفسّرولك وضعيتك بالضبط.</p>
+<a href="{{waLink}}" target="_blank" rel="noopener" style="align-self: flex-start; background: var(--tx); color: var(--bg); border-radius: 12px; padding: 12px 20px; font-weight: 800; font-size: 16px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">اسألنا</a>
+</div>
+</section>
+
+<!-- PRICE -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px">
+<div class="zoom" style="background: #FFC400; color: #141518; border-radius: 36px; padding: 48px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px; flex: 1 1 380px; min-width: 0">
+<h2 style="margin: 0; font-size: 40px; font-weight: 900; line-height: 1.3; color: #141518">ابتداءً من <span class="num">1</span> دينار في النهار</h2>
+<p style="margin: 0; font-size: 18px; font-weight: 600">نجيوك للمحل، نحطّو المنيو متاعك، وتجرّب <span class="num">30</span> يوم بلاش.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a class="btn" href="{{waLink}}" target="_blank" rel="noopener" style="background: #141518; color: #F5F5F2; border-radius: 14px; padding: 15px 24px; font-weight: 800; font-size: 17px; min-height: 54px; box-sizing: border-box; display: inline-flex; align-items: center">ابعث في WhatsApp</a>
+<a href="../#pricing" style="border: 2px solid #141518; color: #141518; border-radius: 14px; padding: 13px 22px; font-weight: 800; font-size: 17px; min-height: 54px; box-sizing: border-box; display: inline-flex; align-items: center">كل الأسعار</a>
+</div>
+</div>
+</section>
+
+<!-- OTHER ACTIVITIES -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; display: flex; flex-direction: column; gap: 18px">
+<h2 class="rv" style="margin: 0; font-size: 30px; font-weight: 900">أنشطة أخرى</h2>
+<div class="stg" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px">
+<sc-for list="{{others}}" as="o" hint-placeholder-count="5">
+<a href="{{o.href}}" class="lift" style="background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; color: var(--tx); font-weight: 800; font-size: 17px; display: flex; justify-content: space-between; align-items: center; gap: 10px">{{o.n}}<span style="color: var(--hl)">←</span></a>
+</sc-for>
+</div>
+</section>
+
+<footer style="border-top: 1px solid var(--line); background: var(--bar)">
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; color: var(--tx4); font-size: 14px">
+<a href="../" class="num" style="font-size: 22px; font-weight: 800; color: var(--tx)">SX<span style="color: #FFC400">.</span> <span style="font-size: 14px; color: var(--tx4)">SYN0X POS</span></a>
+<span>الكاسة الذكية للمحلات الصغار والمتوسطة · تونس</span>
+<a href="tel:+21629495848" class="num" style="color: var(--tx3)">29 495 848</a>
+<a href="https://www.facebook.com/profile.php?id=61596007040555" target="_blank" rel="noopener" style="color: var(--tx3); font-weight: 700">فيسبوك</a>
+<span class="num">© 2026 SYN0X</span>
+</div>
+</footer>
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"act":{"editor":"enum","options":["cafe","snack","pizzeria","restaurant","boulangerie","kiosque"],"default":"cafe"},"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lang: (() => { try { return localStorage.getItem('sx-lang') || 'ar'; } catch (e) { return 'ar'; } })(),
+      light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })()
+    };
+  }
+  renderVals() {
+    const fmt = (n) => n.toFixed(3);
+    const DATA = {
+      cafe: { name: 'قهوة وصالون شاي',
+        h1: 'كاسة للقهوة: الإكسبريس بضغطة، والوردية بحسابها.',
+        p: 'الكاشير يبيع المنتجات الحاضرة بضغطة وحدة، كل وردية تتسكّر بالفرق متاعها، وإنت تشوف المدخول من تليفونك.',
+        inc: ['قهوة', 'صالون شاي', 'كريمري', 'عصائر'],
+        prod: [['إكسبريس', 1.5], ['كابوسان', 2.2], ['تاي', 1.5], ['عصير', 3], ['ماء', 1], ['كرواسان', 1.2]],
+        pains: [
+          { b: 'الصباح والعشية بكاشيرين، والكاسة ناقصة وما تعرفش على شكون.', a: 'كل كاشير يحلّ ويسكّر ورديتو، والفرق يتسجّل عليه.' },
+          { b: 'الحرفاء متاع كل يوم يخلّصو آخر الجمعة، والكرني يضيع.', a: 'كل حريف برقمو، والدين يتلوّن كي يفوت السقف.' },
+          { b: 'السكر والقهوة يوفاو وإنت ما تعرفش.', a: 'تنبيه قبل ما توفى السلعة، حسب الوصفة متاع كل منتج.' }],
+        feats: ['البيع بضغطة وحدة للمنتج الحاضر', 'وردية لكل كاشير بالعدّ الأعمى', 'الكريدي للحرفاء متاع كل يوم', 'البيع والربح من تليفونك'],
+        law: 'القهاوي والمطاعم (الشركات) معنيين بالكاسة الجبائية من جويلية 2026، والأشخاص الطبيعيين من بعد.',
+        soon: ['الطاولات والسرفورة'] },
+      snack: { name: 'الأكل السريع',
+        h1: 'كاسة للأكل السريع: الطلب يتخلّص والذروة ما توقفش.',
+        p: 'الإضافات بضغطة، زر «كامل» يختار الكل مرة وحدة، والطلب يتخلّص في ضغطتين برقم كبير على التيكي باش تنادي الحريف.',
+        inc: ['سناك', 'ملاوي', 'كسكروت', 'فاست فود', 'شاورما', 'كفتاجي'],
+        prod: [['ملاوي تن', 2], ['كسكروت تن', 3.5], ['شاورما', 6], ['برقر', 7], ['فريت', 1.5], ['كوكا', 2.5]],
+        pains: [
+          { b: 'في الذروة، الطلبات تتلخبط والحريف يستنّى.', a: 'رقم الطلب كبير في التيكي، والانتظار والمواصلة بين الطلبات.' },
+          { b: 'الإضافات والملاحظات (بلا هريسة، حار برشة) تتنسى.', a: 'الملاحظات تتطبع بالغليظ في التيكي للي يحضّر.' },
+          { b: 'ما تعرفش قدّاش يكلّفك الكسكروت بالضبط.', a: 'كل منتج بوصفتو: التكلفة والربح يتحسبو وحدهم.' }],
+        feats: ['زر «كامل» للإضافات', 'الانتظار والمواصلة', 'رقم الطلب كبير في التيكي', 'الربح على كل منتج'],
+        law: 'السناك والأكل السريع يدخلو لقانون الكاسة الجبائية بالمراحل حتى 2028.',
+        soon: ['شاشة الكوجينة'] },
+      pizzeria: { name: 'البيتزيريا',
+        h1: 'كاسة للبيتزيريا: الحجم يبدّل السوم والوصفة وحدو.',
+        p: 'صغير، متوسط، كبير: السوم يتحسب وحدو، المكوّنات تنقص حسب الحجم، والإضافات بسومها.',
+        inc: ['بيتزيريا', 'بيتزا للخارج', 'كالزون'],
+        prod: [['مرغريتا', 8], ['بيتزا تن', 9.5], ['4 فصول', 11], ['كالزون', 10], ['فريت', 1.5], ['مشروب', 2.5]],
+        pains: [
+          { b: 'السوم يتغلط كي يبدّل الحريف الحجم ولا يزيد إضافة.', a: 'الأحجام لكل عائلة، والسوم يتحسب وحدو مع الإضافات.' },
+          { b: 'الجبن والعجين يوفاو في نص الليل.', a: 'المكوّنات تنقص بالوصفة حسب الحجم، وتنبيه قبل ما توفى.' },
+          { b: 'ما تعرفش أنهو بيتزا تربّحك أكثر.', a: 'التقارير توريك أكثر حاجة تباعت والربح على كل وحدة.' }],
+        feats: ['الأحجام والسوم وحدو', 'الوصفة تتضرب في الحجم', 'الإضافات بسومها', 'أكثر حاجة تباعت'],
+        law: 'المحلات اللي فيها أكل في البلاصة معنية بقانون الكاسة الجبائية حسب رزنامة تمشي حتى 2028.',
+        soon: ['التوصيل'] },
+      restaurant: { name: 'المطعم',
+        h1: 'كاسة للمطعم: الكوجينة تفهم، والمصاريف تتحسب.',
+        p: 'الملاحظات تتطبع للي يحضّر، الخدّامة والمرتبات والمصاريف في نفس البرنامج، وتعرف ربحك الصافي آخر الشهر.',
+        inc: ['مطعم شعبي', 'مطعم عائلي', 'مشوي', 'سمك'],
+        prod: [['كسكسي', 9], ['أوجّة', 7], ['سلاطة', 4], ['مقرونة', 8], ['مشوي', 14], ['مشروب', 2.5]],
+        pains: [
+          { b: 'برشا خدّامة، وما تعرفش قدّاش تخلّص وقدّاش سلّفت.', a: 'الخدّامة والمرتبات والسلف، وتعرف ديما قدّاش يتسال كل واحد.' },
+          { b: 'المصاريف (غاز، خضرة، تصليح) تضيع في الجيب.', a: 'كل مصروف يتسجّل بنوعو، والكراء والضو يتنحّاو كل نهار.' },
+          { b: 'البيع كبير، أما الربح ما يبانش.', a: 'الربح الصافي بعد السلعة والمرتبات والمصاريف.' }],
+        feats: ['الملاحظات للكوجينة', 'الخدّامة والمرتبات', 'المصاريف والمغلّفات', 'الربح الصافي'],
+        law: 'القهاوي والمطاعم (الشركات) معنيين بالكاسة الجبائية من جويلية 2026، والأشخاص الطبيعيين من بعد.',
+        soon: ['الطاولات', 'شاشة الكوجينة'] },
+      boulangerie: { name: 'المخبزة والحلويات',
+        h1: 'كاسة للمخبزة والحلويات: بيع الصباح بضغطة، والتكلفة بالضبط.',
+        p: 'الخبز والكرواسان بضغطة وحدة، كل قاطو بوصفتو باش تعرف قدّاش يكلّفك، وتنبيه كي الفارينة ولا السكر يغلاو.',
+        inc: ['مخبزة', 'باتيسري', 'حلويات تقليدية', 'غلاس'],
+        prod: [['باتون', 0.2], ['كرواسان', 1.2], ['قاطو', 3], ['بقلاوة', 2.5], ['تارت', 3], ['غلاس', 2]],
+        pains: [
+          { b: 'الصباح زحمة والكاسة ما تلحقش.', a: 'البيع بضغطة وحدة للمنتج الحاضر.' },
+          { b: 'ما تعرفش قدّاش يكلّفك القاطو بالضبط.', a: 'الوصفات وتكلفة كل منتج تتحسب وحدها.' },
+          { b: 'الفارينة والسكر والزبدة يغلاو وإنت ما تحسّش.', a: 'تنبيه كي مادة أولية تغلى، والتكلفة تتحدّث.' }],
+        feats: ['البيع بضغطة وحدة', 'الوصفات والتكلفة', 'تنبيه كي مادة تغلى', 'الكريدي للحرفاء'],
+        law: 'المخابز يدخلو لقانون الكاسة الجبائية بالمراحل حتى 2028.',
+        soon: ['البيع بالكغ (الميزان)'] },
+      kiosque: { name: 'الكشك والمغازة',
+        h1: 'كاسة للكشك والمغازة: برشا منتجات صغار، والكريدي بلاصة الكرني.',
+        p: 'البيع بضغطة ولا بالبحث بالإسم، المخزون بالحبة، والمزوّدين والشيكات في بلاصة وحدة.',
+        inc: ['كشك', 'عطّار', 'مغازة صغيرة'],
+        prod: [['مياه', 0.8], ['ياغورت', 0.6], ['حليب', 1.4], ['بسكوي', 1], ['شكلاطة', 2], ['مشروبات', 2.5]],
+        pains: [
+          { b: 'الكرني متاع الكريدي يتعبّى ويضيع.', a: 'كل جار برقمو، والدين ظاهر ويتلوّن كي يفوت السقف.' },
+          { b: 'ما تعرفش شنوّة باقي في الستوك.', a: 'المخزون بالحبة، وتنبيه قبل ما يوفى.' },
+          { b: 'المزوّدين والشيكات يتلخبطو.', a: 'الشراء والشيكات بتاريخها، وتذكير قبل الشيك.' }],
+        feats: ['البيع بالبحث بالإسم', 'المخزون بالحبة', 'المزوّدين والشيكات', 'الكريدي بلاصة الكرني'],
+        law: 'القانون الحالي يخصّ محلات الاستهلاك في البلاصة. كان عندك قهوة ولا أكل في الكشك، اسألنا.',
+        soon: ['الكود-بار', 'الميزان'] }
+    };
+    const ORDER = ['cafe', 'snack', 'pizzeria', 'restaurant', 'boulangerie', 'kiosque'];
+    const key = DATA[this.props.act] ? this.props.act : 'cafe';
+    const A = DATA[key];
+    const T = ['#3A3326', '#4A3A2C', '#3A2F2B', '#33302A', '#38342A', '#3A2626'];
+    const tiles = A.prod.map(([n, p], i) => ({ n, p: fmt(p), tint: T[i], qty: i < 2 ? '×' + (i === 0 ? 2 : 1) : '', border: i < 2 ? '#FFC400' : 'transparent' }));
+    const lines = [{ q: '×2', n: A.prod[0][0], p: fmt(2 * A.prod[0][1]) }, { q: '×1', n: A.prod[1][0], p: fmt(A.prod[1][1]) }];
+    const total = fmt(2 * A.prod[0][1] + A.prod[1][1]);
+    const others = ORDER.filter((k) => k !== key).map((k) => ({ n: DATA[k].name, href: '../' + k + '/' }));
+    const waLink = 'https://wa.me/21629495848?text=' + encodeURIComponent('السلام، نحب نجرّب SYN0X POS.' + '\nالمحل: ' + A.name);
+    const lang = this.state.lang || 'ar';
+    const langs = [['ar', 'تونسي'], ['fr', 'FR'], ['en', 'EN']].map(([code, t]) => ({ code, t, on: code === lang,
+      bg: code === lang ? '#FFC400' : 'var(--card)', fg: code === lang ? '#141518' : 'var(--tx3)',
+      pick: () => { try { localStorage.setItem('sx-lang', code); } catch (e) {} try { if (typeof SXSetLang === 'function') SXSetLang(code); } catch (e) {} this.setState({ lang: code }); } }));
+    const isLight = !!this.state.light;
+    return { A, tiles, lines, total, others, waLink, hasSoon: A.soon.length > 0, langs, dir: lang === 'ar' ? 'rtl' : 'ltr',
+      isLight, isDark: !isLight, themeCls: isLight ? 'th-light' : 'th-dark', themeLabel: isLight ? 'الوضع الليلي' : 'الوضع النهاري',
+      toggleTheme: () => { const v = !this.state.light; try { localStorage.setItem('sx-theme', v ? 'light' : 'dark'); } catch (e) {} this.setState({ light: v }); } };
+  }
+}
+
+</script>
+</body>
+</html>

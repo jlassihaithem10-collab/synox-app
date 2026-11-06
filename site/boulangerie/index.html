@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>برنامج كاسة للمخبزة والحلويات — SYN0X POS</title>
+<meta name="description" content="كاسة للمخبزة والباتيسري: بيع الصباح بضغطة، والوصفات وتكلفة كل منتج. ابتداءً من 1 دينار في النهار.">
+<meta name="theme-color" content="#141518">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-180.png">
+<link rel="canonical" href="https://jlassihaithem10-collab.github.io/synox-app/site/boulangerie/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_TN">
+<meta property="og:title" content="برنامج كاسة للمخبزة والحلويات — SYN0X POS">
+<meta property="og:description" content="كاسة للمخبزة والباتيسري: بيع الصباح بضغطة، والوصفات وتكلفة كل منتج. ابتداءً من 1 دينار في النهار.">
+<meta property="og:url" content="https://jlassihaithem10-collab.github.io/synox-app/site/boulangerie/">
+<meta property="og:image" content="https://jlassihaithem10-collab.github.io/synox-app/site/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jlassihaithem10-collab.github.io/synox-app/site/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ECECE7}
+.th-dark,.dark-zone{--page:#0B0C0E;--bg:#141518;--bar:#0E0F11;--card:#1A1B1F;--card2:#212328;--line:#2A2C32;--border:#3A3D44;--tx:#F5F5F2;--tx2:#B4B6BC;--tx3:#C9CBD1;--tx4:#9A9CA3;--beige:#24221C;--beige2:#2F2C24;--beigeBd:#3A3526;--chip:#24262B;--marq:#2E3036;--hl:#FFC400;--hlbg:none;--nav:rgba(14,15,17,.82);--sh:rgba(0,0,0,.5)}
+.th-light{--page:#ECECE7;--bg:#F4F4F1;--bar:#FFFFFF;--card:#FFFFFF;--card2:#ECECE7;--line:#E2E2DC;--border:#D6D6D0;--tx:#17181B;--tx2:#55585F;--tx3:#3F4249;--tx4:#6B6E75;--beige:#F6F0E1;--beige2:#EDE4CC;--beigeBd:#E3D7B6;--chip:#F4F4F1;--marq:#D6D6D0;--hl:#17181B;--hlbg:linear-gradient(transparent 58%,rgba(255,196,0,.65) 58%);--nav:rgba(255,255,255,.86);--sh:rgba(23,24,27,.1)}
+.th-light .lift:hover{border-color:#C9C9C2;box-shadow:0 24px 48px rgba(23,24,27,.12)}
+.dark-zone{color:var(--tx)}
+
+html{scroll-behavior:smooth}
+a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
+.num{font-family:Poppins,Cairo,sans-serif;direction:ltr;unicode-bidi:isolate}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes up{from{opacity:0;transform:translateY(32px)}}
+.float{animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.tilt{transform:perspective(1600px) rotateY(-9deg) rotateX(5deg);transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tilt:hover{transform:perspective(1600px) rotateY(0) rotateX(0)}
+.tile{transition:border-color .3s,background .3s}
+.tap{animation:tap .55s ease-out}
+@keyframes tap{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,196,0,.7)}35%{transform:scale(.9)}100%{transform:scale(1);box-shadow:0 0 0 14px rgba(255,196,0,0)}}
+.ln{animation:ln .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ln{from{opacity:0;transform:translateX(-36px)}}
+.press{animation:press 1s ease-in-out infinite}
+@keyframes press{0%{box-shadow:0 0 0 0 rgba(255,196,0,.65)}100%{box-shadow:0 0 0 16px rgba(255,196,0,0)}}
+.pop{animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.7) translateY(20px)}}
+.marq{display:flex;width:max-content;animation:marq 34s linear infinite}
+@keyframes marq{to{transform:translateX(-50%)}}
+.lift{transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s}
+.lift:hover{transform:translateY(-8px);border-color:#4A4D55;box-shadow:0 24px 48px rgba(0,0,0,.4)}
+.glow{animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 1px rgba(255,196,0,.5),0 20px 60px rgba(255,196,0,.18)}}
+.btn{transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(255,196,0,.28)}
+.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.prog{display:none}
+.burger{display:none}
+[dir=ltr] .inv-row{flex-direction:row-reverse}
+[dir=ltr] .band-grad{background:linear-gradient(to right,rgba(11,12,14,.82) 0%,rgba(11,12,14,.35) 45%,rgba(11,12,14,0) 70%)!important}
+[dir=ltr] .band-txt{right:auto!important;left:0}
+[dir=ltr] .prog-dir{transform-origin:left!important}
+[dir=ltr] .growx{transform-origin:left}
+.lang-sw{display:inline-flex;border:1px solid var(--border);border-radius:12px;overflow:hidden;height:44px}
+.lang-sw button{border:0;background:var(--card);color:var(--tx3);font-family:Cairo,Poppins,sans-serif;font-weight:800;font-size:14px;padding:0 10px;min-width:40px;cursor:pointer}
+@media (max-width:480px){.lang-sw button{padding:0 7px;min-width:34px;font-size:13px}}
+.stamp{animation:stampIn .8s cubic-bezier(.2,1.5,.4,1) .9s both, wob 4s ease-in-out 2s infinite;color:#141518}
+.stamp:hover{color:#141518}
+@keyframes stampIn{from{opacity:0;transform:scale(2.2) rotate(-40deg)}to{opacity:1;transform:scale(1) rotate(-12deg)}}
+@keyframes wob{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(-6deg) scale(1.05)}}
+@media (max-width:600px){.stamp{width:82px!important;height:82px!important;top:-40px!important;left:-6px!important;border-width:3px!important}.stamp span{font-size:10px!important}.stamp span.num{font-size:22px!important}}
+.wa-fab{animation:wa 2.4s ease-in-out infinite;transition:transform .25s}
+.wa-fab:hover{transform:scale(1.08)}
+@keyframes wa{0%,100%{box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 0 rgba(22,163,74,.55)}50%{box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 0 14px rgba(22,163,74,0)}}
+@supports (animation-timeline: view()){.paper{animation:paper linear both;animation-timeline:view();animation-range:entry 30% cover 55%}@keyframes paper{from{transform:translateY(-100%)}}}
+.cta-short{display:none}
+@media (max-width:1180px){.nav-links{display:none!important}.burger{display:inline-flex}}
+@media (min-width:1181px){.menu-panel{display:none!important}}
+.nav-links a{white-space:nowrap}
+@media (max-width:700px){.tilt{width:620px;zoom:calc((100vw - 48px) / 620px);transform:none}.tilt:hover{transform:none}}
+[dir=ltr] .wa-fab{left:auto!important;right:20px}
+[dir=ltr] h1{font-size:48px!important;line-height:1.15!important}
+@media (max-width:600px){[dir=ltr] h1{font-size:34px!important}}
+@media (max-width:480px){.nav-cta{display:none!important}}
+@media (max-width:480px){.nav-sub{display:none}.cta-long{display:none}.cta-short{display:inline}}
+@media (max-width:600px){img[alt]{max-height:380px}h1{font-size:36px!important}h2{font-size:30px!important}.shrink{padding:26px!important}.shrink h3{font-size:28px!important}.zoom{padding-left:24px!important;padding-right:24px!important}}
+@media (min-width:900px) and (min-height:740px){.hero-stick{position:sticky;top:72px}@supports (animation-timeline: view()){.hero-spacer{height:520px}}}
+@supports (animation-timeline: view()){
+.prog{display:block;animation:prog linear both;animation-timeline:scroll(root)}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (min-width:900px) and (min-height:740px){.heroOut{animation:heroOut linear both;animation-timeline:scroll(root);animation-range:0px 620px}}
+@keyframes heroOut{to{transform:scale(.9) translateY(-30px);opacity:.25}}
+.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+@keyframes rv{from{opacity:0;transform:translateY(80px) scale(.96)}}
+.rvs{animation:rvs linear both;animation-timeline:view();animation-range:entry 0% cover 35%}
+@keyframes rvs{from{opacity:0;transform:translateX(-90px) rotate(-2deg)}}
+.zoom{animation:zoom linear both;animation-timeline:view();animation-range:entry 0% cover 25%}
+@keyframes zoom{from{transform:scale(.88);border-radius:80px;opacity:.4}}
+.phone{animation:phone linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes phone{from{transform:translateY(160px) rotate(-12deg) scale(.85);opacity:0}}
+.bar{transform-origin:bottom;animation:bar linear both;animation-timeline:view();animation-range:entry 20% cover 50%}
+@keyframes bar{from{transform:scaleY(.05)}}
+.growx{transform-origin:right;animation:growx linear both;animation-timeline:view();animation-range:entry 10% cover 40%}
+@keyframes growx{from{transform:scaleX(0)}}
+.shrink{animation:shrink linear both;animation-timeline:view();animation-range:exit-crossing 0% exit-crossing 100%}
+@keyframes shrink{to{transform:scale(.92);filter:brightness(.6)}}
+}
+@supports (animation-timeline: view()){
+@keyframes tiltFlat{0%{transform:perspective(1600px) rotateY(-14deg) rotateX(8deg) scale(.94)}35%,100%{transform:perspective(1600px) rotateY(0) rotateX(0) scale(1)}}
+@keyframes scrCash{0%,30%{opacity:0;transform:translateY(16px)}40%,62%{opacity:1;transform:none}72%,100%{opacity:0;transform:translateY(-16px)}}
+@keyframes scrRep{0%,62%{opacity:0;transform:translateY(16px)}72%,100%{opacity:1;transform:none}}
+@media (min-width:900px) and (min-height:740px){
+.tilt{animation:tiltFlat linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-cash{animation:scrCash linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.scr-rep{animation:scrRep linear both;animation-timeline:scroll(root);animation-range:0px 700px}
+.heroOut{animation-range:620px 1000px!important}
+}
+@media not ((min-width:900px) and (min-height:740px)){
+.scr-cash{animation:scrCash linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+.scr-rep{animation:scrRep linear both;animation-timeline:view();animation-range:cover 15% cover 85%}
+}
+.plx{animation:plx linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plx{from{transform:translateY(-9%) scale(1.18)}to{transform:translateY(9%) scale(1.18)}}
+.plx-s{animation:plxS linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes plxS{from{transform:translateY(50px)}to{transform:translateY(-50px)}}
+.stg>*{animation:stg linear both!important;animation-timeline:view()!important}
+.stg>:nth-child(4n+1){animation-range:entry 0% cover 28%!important}
+.stg>:nth-child(4n+2){animation-range:entry 12% cover 36%!important}
+.stg>:nth-child(4n+3){animation-range:entry 24% cover 44%!important}
+.stg>:nth-child(4n+4){animation-range:entry 36% cover 52%!important}
+@keyframes stg{from{opacity:0;transform:translateY(90px) rotate(1.5deg) scale(.94)}}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<noscript><p style="font-family:sans-serif;padding:24px">SYN0X POS — WhatsApp: +216 29 495 848</p></noscript>
+<script src="../vendor/react.production.min.js"></script>
+<script src="../vendor/react-dom.production.min.js"></script>
+<script>window.SX_PROPS={act:"boulangerie"}</script>
+<script src="../act.js"></script>
+</body>
+</html>
