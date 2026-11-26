@@ -650,6 +650,9 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">إسمك
 <input type="text" value="{{f.name}}" onInput="{{setName}}" placeholder="مثلا: سامي" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 12px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px; box-sizing: border-box">
 </label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">رقم التليفون
+<input type="tel" inputmode="tel" autocomplete="tel" value="{{f.phone}}" onInput="{{setPhone}}" placeholder="مثلا: 22 123 456" class="num" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 12px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px; box-sizing: border-box; text-align: start">
+</label>
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">نوع المحل
 <select value="{{f.kind}}" onChange="{{setKind}}" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 10px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px">
 <option value="سناك وملاوي">سناك وملاوي</option>
@@ -665,7 +668,13 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 <label style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-size: 15px">الولاية
 <input type="text" value="{{f.city}}" onInput="{{setCity}}" placeholder="مثلا: باجة" style="font-family: Cairo, sans-serif; font-size: 17px; padding: 12px 14px; border-radius: 12px; border: 2px solid #141518; background: #FFFFFF; color: #141518; min-height: 48px; box-sizing: border-box">
 </label>
-<a class="btn" href="{{waLink}}" target="_blank" rel="noopener" style="background: var(--bg); color: var(--tx); border-radius: 14px; padding: 15px 24px; font-weight: 800; font-size: 18px; text-align: center; min-height: 56px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px">
+<sc-if value="{{f.err}}" hint-placeholder-val="{{false}}">
+<span role="alert" style="background: #FFFFFF; color: #B91C1C; border-radius: 10px; padding: 8px 12px; font-weight: 800; font-size: 14px">اكتب رقم تليفونك باش نكلّموك (8 أرقام).</span>
+</sc-if>
+<sc-if value="{{f.sent}}" hint-placeholder-val="{{false}}">
+<span role="status" style="background: #141518; color: #FFFFFF; border-radius: 10px; padding: 8px 12px; font-weight: 800; font-size: 14px">وصلنا طلبك، نكلّموك قريب.</span>
+</sc-if>
+<a class="btn" href="{{waLink}}" onClick="{{sendLead}}" target="_blank" rel="noopener" style="background: var(--bg); color: var(--tx); border-radius: 14px; padding: 15px 24px; font-weight: 800; font-size: 18px; text-align: center; min-height: 56px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px">
 <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.5 7.8L3 21l1.2-4.4A9 9 0 1 1 21 12z"></path></svg>ابعث الطلب في WhatsApp</a>
 <a href="tel:+21629495848" style="color: #141518; font-weight: 800; font-size: 15px; text-align: center; padding: 8px">ولا اتّصل: <span class="num">29 495 848</span></a>
 <a href="https://www.facebook.com/profile.php?id=61596007040555" target="_blank" rel="noopener" style="color: #141518; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 4px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"></path></svg>تابعنا على فيسبوك</a>
@@ -689,7 +698,7 @@ a{color:#FFC400;text-decoration:none}a:hover{color:#FFD54A}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFC400","options":["#FFC400","#F5F5F2","#16A34A"]},"demo":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":11000}}'>
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { open: 0, step: 0, cycle: 0, menu: false, lang: (() => { try { return localStorage.getItem('sx-lang') || 'ar'; } catch (e) { return 'ar'; } })(), sales: 300, act: 3, light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })(), name: '', kind: 'سناك وملاوي', city: '' }; }
+  constructor(props) { super(props); this.state = { open: 0, step: 0, cycle: 0, menu: false, lang: (() => { try { return localStorage.getItem('sx-lang') || 'ar'; } catch (e) { return 'ar'; } })(), sales: 300, act: 3, light: (() => { try { return localStorage.getItem('sx-theme') !== 'dark'; } catch (e) { return true; } })(), name: '', phone: '', kind: 'سناك وملاوي', city: '', err: false, sent: false }; }
   componentDidMount() {
     this.timer = setInterval(() => {
       if (this.props.demo === false) return;
@@ -810,6 +819,7 @@ class Component extends DCLogic {
     const st = this.state;
     const msg = 'السلام، نحب نجرّب SYN0X POS.' +
       (st.name ? '\nإسمي: ' + st.name : '') +
+      (st.phone ? '\nالتليفون: ' + st.phone : '') +
       '\nالمحل: ' + st.kind +
       (st.city ? '\nالولاية: ' + st.city : '');
     const waLink = 'https://wa.me/21629495848?text=' + encodeURIComponent(msg);
@@ -874,7 +884,23 @@ class Component extends DCLogic {
       isLight, isDark: !isLight, themeCls: isLight ? 'th-light' : 'th-dark',
       themeLabel: isLight ? 'الوضع الليلي' : 'الوضع النهاري',
       toggleTheme: () => { const v = !this.state.light; try { localStorage.setItem('sx-theme', v ? 'light' : 'dark'); } catch (e) {} this.setState({ light: v }); },
-      ba, waLink, f: { name: st.name, kind: st.kind, city: st.city },
+      ba, waLink, f: { name: st.name, phone: st.phone, kind: st.kind, city: st.city, err: st.err, sent: st.sent },
+      setPhone: (e) => this.setState({ phone: e.target.value, err: false }),
+      // La demande est enregistree dans Supabase (table leads, visible seulement dans le SYN0X Control Center), puis WhatsApp s ouvre.
+      sendLead: (e) => {
+        const digits = (st.phone || '').replace(/[^0-9]/g, '').replace(/^216/, '');
+        if (digits.length !== 8) { e.preventDefault(); this.setState({ err: true }); return; }
+        const ACT = [['سناك وملاوي', 'Snack'], ['فاست فود وكسكروت', 'Fast-food'], ['بيتزيريا', 'Pizzeria'], ['قهوة وصالون شاي', 'Café'], ['مطعم', 'Restaurant'], ['كشك ومغازة', 'Kiosque'], ['مخبزة وباتيسري', 'Boulangerie'], ['محل آخر', 'Commerce de détail']];
+        const act = (ACT.find((x) => x[0] === st.kind) || [0, st.kind])[1];
+        try {
+          fetch('https://asnwnuqkmvdmigqsylzi.supabase.co/rest/v1/rpc/submit_lead', {
+            method: 'POST', keepalive: true,
+            headers: { 'Content-Type': 'application/json', apikey: 'sb_publishable_nOKhR-yAI_72h1VvIKZAAQ_Eo33g_y1' },
+            body: JSON.stringify({ p_name: (st.name || '').trim().length >= 2 ? st.name.trim() : 'Sans nom', p_phone: '+216' + digits, p_activity: act, p_governorate: (st.city || '').trim() || null, p_plan: null, p_message: null, p_lang: st.lang === 'fr' || st.lang === 'en' ? st.lang : 'ar', p_source: location.pathname + location.search })
+          }).catch(() => {});
+        } catch (_) { /* WhatsApp s ouvre quand meme */ }
+        this.setState({ err: false, sent: true });
+      },
       setName: (e) => this.setState({ name: e.target.value }),
       setKind: (e) => this.setState({ kind: e.target.value }),
       setCity: (e) => this.setState({ city: e.target.value }),
